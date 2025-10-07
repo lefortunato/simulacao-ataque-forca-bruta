@@ -88,16 +88,73 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 **🛠️--- Metasploitable ---** </br>
 
 14. **Descompactação do Metasploitable -** O Metasploitable não é uma ISO, mas sim um arquivo `.VMDK`. O download vai diponibilizar um arquivo zip que deverá ser descompactado.
-15. **Instalação do Metasploitable -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem, NÃO selecione NENHUM arquivo ISO, e finalize.  Observe a imagem abaixo.
+15. **Instalação do Metasploitable -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem, NÃO selecione NENHUM arquivo ISO. Escolha o `Linux` como o sistema operacional e finalize.  Observe a imagem abaixo.
 
 <div align="right">
   <details>
     <summary font-weight: bold;">
-      [Configuração Kali Linux]
+      [Instalação do Metasploitable]
     </summary>
     <img src="images/Meta01.png" alt="Configuração de VM" width="600">
   </details>
 </div>
+
+16. **Configuração do Metasploitable -** Com o VirtualBox aberto, selecione a imagem do Metasploitable criada e clique em `Configurações`.
+17. **Sistema -** Selecione a aba Sistema, no item `Placa-Mãe` vamos manter apenas o boot pelo `Disco Rígido`. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Sistema]
+    </summary>
+    <img src="images/Meta02.png" alt="Configuração de VM" width="600">
+  </details>
+</div>
+
+19. **Armazenamento Passo 1-** Neste item, primeiro vamos remover o `MetaSploit_.vdi`. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Armazenamento Passo 1]
+    </summary>
+    <img src="images/Meta03.png" alt="Configuração de VM" width="600">
+  </details>
+</div>
+
+20. **Armazenamento Passo 2-** Agora vamos adicionar um novo disco rígido. Clique no botão `Add hard disc`. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Armazenamento Passo 2]
+    </summary>
+    <img src="images/Meta04.png" alt="Configuração de VM" width="600">
+  </details>
+</div>
+
+22. **Armazenamento Passo 3-** Agora vamos adicionar o arquivo `.VMDK`. Clique no botão `Acrescentar`, depois selecione o arquivo `.VMDK` e clique em abrir. Por último, selecione o arquivo carregado e clique em Escolher.  Observe a imagem abaixo.
+
+<table align="right" style="border: none; border-collapse: collapse; width: 100%;">
+  <tr>
+    <td align="center" style="border: none; padding: 0 10px;">
+      <details>
+        <summary style="font-weight: bold;">
+          [Armazenamento Passo 3-A]
+        </summary>
+        <img src="images/Meta05.png" alt="Configuração Kali Linux" width="300">
+      </details>
+    </td>    
+    <td align="center" style="border: none; padding: 0 10px;">
+      <details>
+        <summary style="font-weight: bold;">
+          [Armazenamento Passo 3-B]
+        </summary>
+        <img src="images/Meta06.png" alt="Configuração Metasploitable" width="300">
+      </details>
+    </td>
+  </tr>
+</table> </br></br>
 
 1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
 2.  **Rede:** Selecione `Rede` (Network) e depois `Redes Somente Host` (Host-only Networks).
