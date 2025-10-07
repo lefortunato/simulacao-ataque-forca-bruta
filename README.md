@@ -61,7 +61,8 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 1. **Instalação do VirtualBox -** A instalação é bem simples, no meu caso, segui com as opções padrões até a finalização.
 2. **Download Kali Linux e Metasploitable -** Faça o download dos 2 programas e jogue num diretório a sua escolha.
 
-#### Kali Linux
+**--- Kali Linux ---** </br>
+
 3. **Instalação Kali Linux -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. Observe a imagem abaixo.
 
 <div align="right">
