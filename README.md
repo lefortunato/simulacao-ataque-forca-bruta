@@ -227,15 +227,49 @@ Identificar se o serviço **FTP (Porta 21)** está aberto e pronto para receber 
 Usaremos o Nmap para realizar uma varredura de portas específica e obter informações detalhadas sobre a versão do serviço (`-sV`).
 
 **Comando de Execução:**</br></br>
-No terminal do Kali Linux, digite o seguinte comando, substituindo `[IP_DO_METASPLOITABLE]` pelo endereço real da sua VM alvo:
+No terminal do Kali Linux, digite o seguinte comando, substituindo `[IP_DO_METASPLOITABLE]` pelo endereço real da sua VM alvo:</br></br>
     ```bash
     nmap -sV -p 21,22,80,445,139 [IP_DO_METASPLOITABLE]
     ```
-| Parâmetro | Fnção |
+| Parâmetro | Função |
 | :--- | :--- |
 | `-sV` | Tenta determinar a versão do serviço rodando nas portas. |
 | `-p` | Limita a varredura a portas específicas (21=FTP, 22=SSH, 80=HTTP, 445/139=SMB). |
 
+Resultado Esperado:</br></br>
+O Nmap deverá confirmar o status da Porta 21 como `open` e exibir a versão do serviço (ex: `vsftpd 2.3.4`), confirmando que o alvo está pronto. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Resultado Esperado]
+    </summary>
+    <img src="images/Kali05.png" alt="Resultado Esperado" width="600">
+  </details>
+</div>
+
+1.2. **Validação Manual do Serviço FTP**</br></br>
+Para validar a descoberta antes de usar o Hydra ou Medusa, confirmamos a conexão manualmente usando o cliente FTP:
+
+Comando de Conexão:
+
+No terminal, tente se conectar:</br></br>
+    ```bash
+    ftp [IP_DO_METASPLOITABLE]
+    ```
+
+Status:
+
+A solicitação imediata de credenciais (`Name:`) confirma que o serviço FTP está aberto, acessível e é um alvo válido para o ataque de força bruta. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Serviço FTP aberto]
+    </summary>
+    <img src="images/Kali06.png" alt="Serviço FTP aberto" width="600">
+  </details>
+</div>
 
 
 
@@ -244,8 +278,6 @@ No terminal do Kali Linux, digite o seguinte comando, substituindo `[IP_DO_METAS
 
 
 
-
-Aqui detalhamos a execução dos ataques e os comandos utilizados. As evidências (screenshots e GIFs) estão disponíveis na pasta `images/`.
 
 ### 1. Força Bruta em Serviço FTP
 
