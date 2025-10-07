@@ -50,14 +50,17 @@ Observação: Todos os comandos de instalação abaixo foram executados no termi
 | Metasploitable 2	| https://sourceforge.net/projects/metasploitable/files/latest/download |	2.0.0
 | Hydra	| sudo apt install hydra (Se não estiver instalado)	hydra -V | 9.5
 | Medusa	| sudo apt install medusa (Se não estiver instalado)	medusa -V | 2.3
-| Nmap | (Para Enumeração)	sudo apt install nmap -V | 7.95
+| Nmap | sudo apt install nmap (Se não estiver instalado) nmap -V | 7.95
 
 ## ⚙️ Configuração do Ambiente
 
 A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais crucial. Optamos pela rede **Host-Only** (Rede Interna/Somente Host) para garantir que o ambiente de ataque estivesse completamente isolado da sua rede doméstica e da Internet.
 
-### 1. Preparação da Rede Host-Only no VirtualBox
+### 1. Instalação do VirtualBox e Preparação da Rede Host-Only para as imagens
 
+1. **Instalação do VirtualBox** A instalação é bem simples, no meu caso, segui com as opções padrões até a finalização.
+2. **Download Kali Linux e Metasploitable** Faça o download dos 2 programas e jogue num diretório a sua escolha.
+3. **Instalação Kali Linux** Com o virtual box aberto, clique no botão [New(novo)](images/metasploitable_logo.png), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. 
 1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
 2.  **Rede:** Selecione `Rede` (Network) e depois `Redes Somente Host` (Host-only Networks).
 3.  **Adicionar:** Clique no ícone de **`+`** (Adicionar) para criar uma nova rede Host-Only (Ex: `vboxnet0`).
