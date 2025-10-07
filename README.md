@@ -61,7 +61,7 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 1. **Instalação do VirtualBox -** A instalação é bem simples, no meu caso, segui com as opções padrões até a finalização.
 2. **Download Kali Linux e Metasploitable -** Faça o download dos 2 programas e jogue num diretório a sua escolha.
 
-**--- Kali Linux ---** </br>
+**🛠️--- Kali Linux ---** </br>
 
 3. **Instalação Kali Linux -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. Observe a imagem abaixo.
 
@@ -83,9 +83,11 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 10. **Tela "Configurar o relógio" -** Escolha `Distrito Federal`.
 11. **Tela "Particionar discos" -** Escolha `Assistido - Usar o disco inteiro`. Na tela seguinte mantenha `Todos os arquivos em uma partição`, e continue. Na tela seguinte, mantenha `Finalizar o particionamento e escrever as mudanças no disco` e continue. Na última dela deste processo, selecione `sim` e continue.
 12. **Tela "Seleção de softwares" -** Mantenha como esta e continue.
+13. **Tela "Instalar o carregador de inicialização GRUB" -** Mantenha sim e continue. Na tela seguinte, escolha o seu HD, deve ser algo do tipo `/dev/sda(xxxxxx)`, e continue.
 
-
-
+**🛠️--- Metasploitable ---** </br>
+14. **Descompactação do Metasploitable -** O Metasploitable não é uma ISO, mas sim um arquivo `.VMDK`. O download vai diponibilizar um arquivo zip que deverá ser descompactado.
+15. **Instalação do Metasploitable** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. Observe a imagem abaixo.
 
 
 1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
