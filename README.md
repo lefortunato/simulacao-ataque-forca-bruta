@@ -56,20 +56,36 @@ Observação: Todos os comandos de instalação abaixo foram executados no termi
 
 A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais crucial. Optamos pela rede **Host-Only** (Rede Interna/Somente Host) para garantir que o ambiente de ataque estivesse completamente isolado da sua rede doméstica e da Internet.
 
-### 1. Instalação do VirtualBox e Preparação da Rede Host-Only para as imagens
+### 1. Instalação do VirtualBox, kali Linux, Metasploitable e Preparação da Rede Host-Only para as imagens
 
 1. **Instalação do VirtualBox -** A instalação é bem simples, no meu caso, segui com as opções padrões até a finalização.
 2. **Download Kali Linux e Metasploitable -** Faça o download dos 2 programas e jogue num diretório a sua escolha.
+
+#### Kali Linux
 3. **Instalação Kali Linux -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. Observe a imagem abaixo.
 
 <div align="right">
   <details>
-    <summary style="color: #6495ED; font-weight: bold;">
-      ▶ [Configuração Kali Linux]
+    <summary font-weight: bold;">
+      [Configuração Kali Linux]
     </summary>
     <img src="images/medusa.svg" alt="Configuração de VM" width="600">
   </details>
 </div>
+
+4. **Inicio da intalação -** Vai parar na tela "Kali Linux Installer menu (BIOS mode)", escolha a opção `Graphical install`.
+5. **Tela "Linguagem" -** Escolha `Portuguese` e clique em continuar, nas telas seguintes escolha os itens referente ao Brasil.
+6. **Tela "Configurar a Rede" -** Mantenha o nome sugerido, no caso Kali.
+7. **Tela "Nome do domínio" -** Não digite nada e clique em continuar.
+8. **Tela "Conta do usuário" -**  Crie um para ser utilizado sempre que for entrar no Kali Linux.
+9. **Tela "Configurar usuários e senhas" -** Crie uma senha para o usuário que criou.
+10. **Tela "Configurar o relógio" -** Escolha `Distrito Federal`.
+11. **Tela "Particionar discos" -** Escolha `Assistido - Usar o disco inteiro`. Na tela seguinte mantenha `Todos os arquivos em uma partição`, e continue. Na tela seguinte, mantenha `Finalizar o particionamento e escrever as mudanças no disco` e continue. Na última dela deste processo, selecione `sim` e continue.
+12. **Tela "Seleção de softwares" -** Mantenha como esta e continue.
+
+
+
+
 
 1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
 2.  **Rede:** Selecione `Rede` (Network) e depois `Redes Somente Host` (Host-only Networks).
