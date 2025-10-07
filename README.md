@@ -37,6 +37,21 @@ Este repositório documenta a execução do **Desafio de Projeto da DIO** focado
 | <img src="images/hydra.svg" alt="Logo Hydra" width="100"/><br/> | Ataques de login em diversos protocolos (FTP, Web).
 | <img src="images/dvwa.png" alt="Logo DVWA" width="100"/><br/> | Alvo para testes de formulários Web.
 
+## ⚙️ Detalhes da Instalação e Versões
+
+Embora muitas das ferramentas (Hydra, Medusa, Nmap) já venham pré-instaladas e configuradas no Kali Linux, é importante listar o comando de instalação (caso necessário) e a versão utilizada.
+
+Observação: Todos os comandos de instalação abaixo foram executados no terminal do Kali Linux.
+
+| Ferramenta | Link | Versão Utilizada
+| :---: | :---: | :---: |
+| VirtualBox	| https://download.virtualbox.org/virtualbox/7.2.2/VirtualBox-7.2.2-170484-Win.exe |	7.2.2
+| Kali Linux	| https://elmirror.cl/kali-images/kali-2025.3/kali-linux-2025.3-installer-amd64.iso | Kali Linux 2025.3
+| Metasploitable 2	| https://sourceforge.net/projects/metasploitable/ |	2.0.0
+| Hydra	| sudo apt install hydra (Se não estiver instalado)	hydra -V | 9.5
+| Medusa	| sudo apt install medusa (Se não estiver instalado)	medusa -V | 2.3
+| Nmap | (Para Enumeração)	sudo apt install nmap -V | 7.95
+
 ## ⚙️ Configuração do Ambiente
 
 A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais crucial. Optamos pela rede **Host-Only** (Rede Interna/Somente Host) para garantir que o ambiente de ataque estivesse completamente isolado da sua rede doméstica e da Internet.
