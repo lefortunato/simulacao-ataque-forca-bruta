@@ -84,11 +84,12 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 11. **Tela "Particionar discos" -** Escolha `Assistido - Usar o disco inteiro`. Na tela seguinte mantenha `Todos os arquivos em uma partição`, e continue. Na tela seguinte, mantenha `Finalizar o particionamento e escrever as mudanças no disco` e continue. Na última dela deste processo, selecione `sim` e continue.
 12. **Tela "Seleção de softwares" -** Mantenha como esta e continue.
 13. **Tela "Instalar o carregador de inicialização GRUB" -** Mantenha sim e continue. Na tela seguinte, escolha o seu HD, deve ser algo do tipo `/dev/sda(xxxxxx)`, e continue.
+14. **Rodando a imagem -** Agora vc pode carregar a imagem para ela finalizar a instalação, a tela final pedira Login e senha.
 
 **🛠️--- Metasploitable ---** </br>
 
-14. **Descompactação do Metasploitable -** O Metasploitable não é uma ISO, mas sim um arquivo `.VMDK`. O download vai diponibilizar um arquivo zip que deverá ser descompactado.
-15. **Instalação do Metasploitable -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem, NÃO selecione NENHUM arquivo ISO. Escolha o `Linux` como o sistema operacional e finalize.  Observe a imagem abaixo.
+15. **Descompactação do Metasploitable -** O Metasploitable não é uma ISO, mas sim um arquivo `.VMDK`. O download vai diponibilizar um arquivo zip que deverá ser descompactado.
+16. **Instalação do Metasploitable -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem, NÃO selecione NENHUM arquivo ISO. Escolha o `Linux` como o sistema operacional e finalize.  Observe a imagem abaixo.
 
 <div align="right">
   <details>
@@ -99,8 +100,8 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
   </details>
 </div>
 
-16. **Configuração do Metasploitable -** Com o VirtualBox aberto, selecione a imagem do Metasploitable criada e clique em `Configurações`.
-17. **Sistema -** Selecione a aba Sistema, no item `Placa-Mãe` vamos manter apenas o boot pelo `Disco Rígido`. Observe a imagem abaixo.
+17. **Configuração do Metasploitable -** Com o VirtualBox aberto, selecione a imagem do Metasploitable criada e clique em `Configurações`.
+18. **Sistema -** Selecione a aba Sistema, no item `Placa-Mãe` vamos manter apenas o boot pelo `Disco Rígido`. Observe a imagem abaixo.
 
 <div align="right">
   <details>
@@ -133,35 +134,29 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
   </details>
 </div>
 
-22. **Armazenamento Passo 3-** Agora vamos adicionar o arquivo `.VMDK`. Clique no botão `Acrescentar`, depois selecione o arquivo `.VMDK` e clique em abrir. Por último, selecione o arquivo carregado e clique em Escolher.  Observe a imagem abaixo.
+21. **Armazenamento Passo 3-** Agora vamos adicionar o arquivo `.VMDK`. Clique no botão `Acrescentar`, depois selecione o arquivo `.VMDK` e clique em abrir. Observe a imagem abaixo.
 
-<table align="right" style="border: none; border-collapse: collapse; width: 100%;">
-  <tr>
-    <td align="center" style="border: none; padding: 0 10px;">
-      <details>
-        <summary style="font-weight: bold;">
-          [Armazenamento Passo 3-A]
-        </summary>
-        <img src="images/Meta05.png" alt="Configuração Kali Linux" width="300">
-      </details>
-    </td>    
-    <td align="center" style="border: none; padding: 0 10px;">
-      <details>
-        <summary style="font-weight: bold;">
-          [Armazenamento Passo 3-B]
-        </summary>
-        <img src="images/Meta06.png" alt="Configuração Metasploitable" width="300">
-      </details>
-    </td>
-  </tr>
-</table> </br></br>
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Armazenamento Passo 3]
+    </summary>
+    <img src="images/Meta05.png" alt="Configuração de VM" width="600">
+  </details>
+</div>
 
-1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
-2.  **Rede:** Selecione `Rede` (Network) e depois `Redes Somente Host` (Host-only Networks).
-3.  **Adicionar:** Clique no ícone de **`+`** (Adicionar) para criar uma nova rede Host-Only (Ex: `vboxnet0`).
-4.  **Configurar Endereço:** Clique com o botão direito na rede recém-criada e escolha `Propriedades`.
-    * **Adaptador:** Defina o IPv4 do adaptador para `192.168.56.1` (Este será o IP do seu Host na rede).
-    * **DHCP:** Desabilite o servidor DHCP (`Não`) para gerenciar os IPs manualmente (ou mantenha ativado se preferir, mas desabilitar é mais seguro para este laboratório).
+22. **Armazenamento Passo 4-** Por último, selecione o arquivo carregado e clique em Escolher.  Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Armazenamento Passo 4]
+    </summary>
+    <img src="images/Meta06.png" alt="Configuração de VM" width="600">
+  </details>
+</div>
+
+23. **Rodando a imagem -** Agora vc pode carregar a imagem para ela finalizar a instalação, a tela final pedira Login e senha.  `Login: msfadmin` | `Senha: msfadmin` .
 
 ### 2. Configuração das Máquinas Virtuais (VMs)
 
