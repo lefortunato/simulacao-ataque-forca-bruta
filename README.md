@@ -58,9 +58,19 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 
 ### 1. Instalação do VirtualBox e Preparação da Rede Host-Only para as imagens
 
-1. **Instalação do VirtualBox** A instalação é bem simples, no meu caso, segui com as opções padrões até a finalização.
-2. **Download Kali Linux e Metasploitable** Faça o download dos 2 programas e jogue num diretório a sua escolha.
-3. **Instalação Kali Linux** Com o VirtualBox aberto, clique no botão <details><summary> [New (novo)] </summary><img src="images/images/medusa.svg" alt="Logotipo do Metasploitable 2" width="500"> <p align="center"><i>Detalhes da imagem: A tela de criação de VM no VirtualBox.</i></p></details>, escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download.
+1. **Instalação do VirtualBox -** A instalação é bem simples, no meu caso, segui com as opções padrões até a finalização.
+2. **Download Kali Linux e Metasploitable -** Faça o download dos 2 programas e jogue num diretório a sua escolha.
+3. **Instalação Kali Linux -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. Observe a imagem abaixo.
+
+<div align="right">
+  <a href="images/configuracao_kali.png" style="color: #6495ED; font-weight: bold;">
+    ▶ [Configuração Kali Linux]
+  </a>
+</div>
+<details><summary> [Configuração Kali Linux] </summary>
+<img src="images/medusa.svg" alt="Logotipo do Metasploitable 2" width="500">
+<p align="center"><i>Detalhes da imagem: A tela de criação de VM no VirtualBox.</i></p>
+</details>
 
 1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
 2.  **Rede:** Selecione `Rede` (Network) e depois `Redes Somente Host` (Host-only Networks).
