@@ -13,10 +13,10 @@
 ## 📋 Sumário
 * [🎯 Descrição do Projeto](#-descrição-do-projeto)
 * [🛠️ Tecnologias e Ferramentas](#%EF%B8%8F-tecnologias-e-ferramentas)
-* [⚙️ Configuração do Ambiente](#-configuracao-do-ambiente)
+* [⚙️ Configuração do Ambiente](#configuracao-do-ambiente)
 * [🚀 Cenários de Ataque Documentados](#-cenários-de-ataque-documentados)
-* [💡 Medidas de Mitigação](#-medidas-de-mitigação)
-* [🔗 Como Contribuir / Contato](#-como-contribuir--contato)
+* [💡 Medidas de Mitigação](#medidas-de-mitigação)
+* [🔗 Como Contribuir / Contato](#como-contribuir--contato)
 
 ---
 
