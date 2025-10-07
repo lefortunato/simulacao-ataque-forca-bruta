@@ -47,7 +47,7 @@ Observação: Todos os comandos de instalação abaixo foram executados no termi
 | :---: | :---: | :---: |
 | VirtualBox	| https://download.virtualbox.org/virtualbox/7.2.2/VirtualBox-7.2.2-170484-Win.exe |	7.2.2
 | Kali Linux	| https://elmirror.cl/kali-images/kali-2025.3/kali-linux-2025.3-installer-amd64.iso | Kali Linux 2025.3
-| Metasploitable 2	| https://sourceforge.net/projects/metasploitable/ |	2.0.0
+| Metasploitable 2	| https://sourceforge.net/projects/metasploitable/files/latest/download |	2.0.0
 | Hydra	| sudo apt install hydra (Se não estiver instalado)	hydra -V | 9.5
 | Medusa	| sudo apt install medusa (Se não estiver instalado)	medusa -V | 2.3
 | Nmap | (Para Enumeração)	sudo apt install nmap -V | 7.95
