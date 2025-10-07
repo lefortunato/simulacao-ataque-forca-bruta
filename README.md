@@ -28,14 +28,14 @@ Este repositório documenta a execução do **Desafio de Projeto da DIO** focado
 
 ## 🛠️ Tecnologias e Ferramentas
 
-| Ferramenta | Uso no Projeto | Badge/Logo |
-| :---: | :--- | :---: |
-| **VirtualBox** | Gerenciamento da rede Host-Only e das VMs. | ![VirtualBox](https://img.shields.io/badge/VirtualBox-181717?style=for-the-badge&logo=virtualbox&logoColor=orange) |
-| **Kali Linux** | Sistema operacional do atacante. | ![Kali Linux](https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kali-linux&logoColor=white) |
-| **Metasploitable 2** | Alvo vulnerável (FTP, SMB). | <img src="images/logo_metasploitable.png" alt="Metasploitable Logo" width="80"/> |
-| **Medusa** | Ataques paralelos, como Password Spraying em SMB. | ![Medusa](https://img.shields.io/badge/Medusa-8E44AD?style=for-the-badge&logo=hackaday&logoColor=white) |
-| **Hydra** | Ataques de login em diversos protocolos (FTP, Web). | ![Hydra](https://img.shields.io/badge/Hydra-4A235A?style=for-the-badge&logo=python&logoColor=white) |
-| **DVWA** | Alvo para testes de formulários Web. | <img src="images/logo_dvwa.png" alt="DVWA Logo" width="80"/> |
+| Ferramenta | Uso no Projeto |
+| :---: | :---: |
+| <img src="images/vb.svg" alt="Logo VirtualBox" width="100"/><br/> | Gerenciamento da rede Host-Only e das VMs.
+| <img src="images/kali.svg" alt="Logo Kali Linux" width="100"/><br/> | Sistema operacional do atacante.
+| <img src="images/metasploitable.png" alt="Logo Metasploitable" width="100"/><br/> | Alvo vulnerável (FTP, SMB).
+| <img src="images/medusa.svg" alt="Logo Medusa" width="100"/><br/> | Ataques paralelos, como Password Spraying em SMB.
+| <img src="images/hydra.svg" alt="Logo Hydra" width="100"/><br/> | Ataques de login em diversos protocolos (FTP, Web).
+| <img src="images/dvwa.png" alt="Logo DVWA" width="100"/><br/> | Alvo para testes de formulários Web.
 
 ***(Nota: Para as ferramentas sem badge oficial, usamos ícones temáticos ou pedimos para você colocar a imagem do logo na pasta `images/`)***
 
