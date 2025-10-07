@@ -63,14 +63,13 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 3. **Instalação Kali Linux -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. Observe a imagem abaixo.
 
 <div align="right">
-  <a href="images/configuracao_kali.png" style="color: #6495ED; font-weight: bold;">
-    ▶ [Configuração Kali Linux]
-  </a>
+  <details>
+    <summary style="color: #6495ED; font-weight: bold;">
+      ▶ [Configuração Kali Linux]
+    </summary>
+    <img src="images/medusa.svg" alt="Configuração de VM" width="600">
+  </details>
 </div>
-<details><summary> [Configuração Kali Linux] </summary>
-<img src="images/medusa.svg" alt="Logotipo do Metasploitable 2" width="500">
-<p align="center"><i>Detalhes da imagem: A tela de criação de VM no VirtualBox.</i></p>
-</details>
 
 1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
 2.  **Rede:** Selecione `Rede` (Network) e depois `Redes Somente Host` (Host-only Networks).
