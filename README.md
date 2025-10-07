@@ -271,10 +271,25 @@ A solicitação imediata de credenciais (`Name:`) confirma que o serviço FTP es
   </details>
 </div>
 
+## 1.4. Criação das Wordlists (Lista de Tentativas)
+Antes de executar o ataque com Hydra ou Medusa, é necessário criar e popular os arquivos de texto (`wordlists`) que a ferramenta usará para testar usuários e senhas.
 
+Opção 1: Criação Rápida Via Comando `echo` (Terminal)
+Este método é rápido e ideal para criar listas curtas diretamente no terminal.
 
-
-
+A. Wordlist de Usuários (`users.txt`)
+Usamos `>` (criar/sobrescrever) na primeira linha e `>>` (adicionar ao final) nas linhas seguintes:
+    ```bash
+    echo "msfadmin" > wordlists/users.txt
+    echo "root" >> wordlists/users.txt
+    echo "user" >> wordlists/users.txt
+    ```
+B. Wordlist de Senhas (`ftp_passwords.txt`)
+    ```bash
+    echo "msfadmin" > wordlists/pass.txt
+    echo "password" >> wordlists/pass.txt
+    echo "123456" >> wordlists/pass.txt
+    ```
 
 
 
