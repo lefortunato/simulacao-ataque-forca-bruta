@@ -54,7 +54,7 @@ Observação: Todos os comandos de instalação abaixo foram executados no termi
 
 ## ⚙️ Configuração do Ambiente
 
-A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais crucial. Optamos pela rede **Host-Only** (Rede Interna/Somente Host) para garantir que o ambiente de ataque estivesse completamente isolado da sua rede doméstica e da Internet.
+A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais crucial. Optamos pela rede **Host-Only** (Rede Interna/Somente Host) para garantir que o ambiente de ataque estivesse completamente isolado da sua rede doméstica e da Internet. Veremos isso mais abaixo no item `Configuração das Máquinas Virtuais (VMs)`.
 
 ### 1. Instalação do VirtualBox, kali Linux, Metasploitable e Preparação da Rede Host-Only para as imagens
 
@@ -162,11 +162,20 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 
 Para ambas as VMs (Kali Linux e Metasploitable 2):
 
-1.  **Configurações:** Clique na VM e vá em `Configurações` (Settings).
-2.  **Rede:** Selecione a seção `Rede` (Network).
-3.  **Adaptador 1:** Mude o campo `Conectado a:` para **"Rede Somente Host"** (`Host-only Adapter`).
-4.  **Nome:** Selecione a rede Host-Only que você criou no passo 1 (Ex: `vboxnet0`).
-5.  **Inicialização:** Inicie ambas as VMs.
+1.  **Configurações -** Selecione a VM e vá em `Configurações` (Settings).
+2.  **Rede -** Selecione a seção `Rede` (Network).
+3.  **Adaptador 1 -** Mude o campo `Conectado a:` para **"Rede Somente Host"** (`Host-only Adapter`). Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Adaptador 1]
+    </summary>
+    <img src="images/Meta07.png" alt="Configuração de VM" width="600">
+  </details>
+</div>
+
+4.  **Inicialização:** Inicie ambas as VMs.
 
 ### 3. Validação dos Endereços IP
 
