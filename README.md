@@ -60,7 +60,7 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 
 1. **Instalação do VirtualBox** A instalação é bem simples, no meu caso, segui com as opções padrões até a finalização.
 2. **Download Kali Linux e Metasploitable** Faça o download dos 2 programas e jogue num diretório a sua escolha.
-3. **Instalação Kali Linux** Com o virtual box aberto, clique no botão [New(novo)](images/metasploitable_logo.png), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. 
+3. **Instalação Kali Linux** Com o virtual box aberto, clique no botão [New(novo)](images/medusa.svg), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. 
 1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
 2.  **Rede:** Selecione `Rede` (Network) e depois `Redes Somente Host` (Host-only Networks).
 3.  **Adicionar:** Clique no ícone de **`+`** (Adicionar) para criar uma nova rede Host-Only (Ex: `vboxnet0`).
