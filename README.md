@@ -70,7 +70,7 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
     <summary font-weight: bold;">
       [Configuração Kali Linux]
     </summary>
-    <img src="images/medusa.svg" alt="Configuração de VM" width="600">
+    <img src="images/Kali01.png" alt="Configuração de VM" width="600">
   </details>
 </div>
 
@@ -86,9 +86,18 @@ A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais 
 13. **Tela "Instalar o carregador de inicialização GRUB" -** Mantenha sim e continue. Na tela seguinte, escolha o seu HD, deve ser algo do tipo `/dev/sda(xxxxxx)`, e continue.
 
 **🛠️--- Metasploitable ---** </br>
-14. **Descompactação do Metasploitable -** O Metasploitable não é uma ISO, mas sim um arquivo `.VMDK`. O download vai diponibilizar um arquivo zip que deverá ser descompactado.
-15. **Instalação do Metasploitable** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem e selecione o arquivo ISO apontando para o diretório onde foi feito o download. Observe a imagem abaixo.
 
+14. **Descompactação do Metasploitable -** O Metasploitable não é uma ISO, mas sim um arquivo `.VMDK`. O download vai diponibilizar um arquivo zip que deverá ser descompactado.
+15. **Instalação do Metasploitable -** Com o VirtualBox aberto, clique no botão New(novo), escolha um nome para a imagem, NÃO selecione NENHUM arquivo ISO, e finalize.  Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Configuração Kali Linux]
+    </summary>
+    <img src="images/Meta01.png" alt="Configuração de VM" width="600">
+  </details>
+</div>
 
 1.  **Abrir Preferências:** No VirtualBox, vá em `Arquivo` (File) -> `Preferências` (Preferences) ou pressione `Ctrl + G`.
 2.  **Rede:** Selecione `Rede` (Network) e depois `Redes Somente Host` (Host-only Networks).
