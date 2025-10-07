@@ -37,8 +37,6 @@ Este repositório documenta a execução do **Desafio de Projeto da DIO** focado
 | <img src="images/hydra.svg" alt="Logo Hydra" width="100"/><br/> | Ataques de login em diversos protocolos (FTP, Web).
 | <img src="images/dvwa.png" alt="Logo DVWA" width="100"/><br/> | Alvo para testes de formulários Web.
 
-***(Nota: Para as ferramentas sem badge oficial, usamos ícones temáticos ou pedimos para você colocar a imagem do logo na pasta `images/`)***
-
 ## ⚙️ Configuração do Ambiente
 
 A configuração de rede entre as duas Máquinas Virtuais (VMs) é o ponto mais crucial. Optamos pela rede **Host-Only** (Rede Interna/Somente Host) para garantir que o ambiente de ataque estivesse completamente isolado da sua rede doméstica e da Internet.
