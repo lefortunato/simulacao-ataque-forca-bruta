@@ -184,19 +184,38 @@ Após iniciar as VMs, é necessário verificar ou definir seus IPs manualmente p
 #### A) Kali Linux (Atacante)
 * **Comando:** Abra o terminal e execute: `ip addr show` ou `ifconfig`
 * **Verificação:** Procure o IP associado ao adaptador `eth1` ou `enp0s8` (o nome do adaptador Host-Only).
-* **IP Esperado:** Deve ser algo como `192.168.56.X` (Ex: `192.168.56.101`).
+* **IP Esperado:** Deve ser algo como `192.168.56.X` (Ex: `192.168.56.102`). Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Verificação Kali]
+    </summary>
+    <img src="images/Kali04.png" alt="Verificação Kali" width="600">
+  </details>
+</div>
+
 
 #### B) Metasploitable 2 (Alvo)
 * **Comando:** Faça login e execute: `ifconfig`
 * **Verificação:** Verifique o IP.
-* **IP Esperado:** Deve ser algo como `192.168.56.Y` (Ex: `192.168.56.102`).
+* **IP Esperado:** Deve ser algo como `192.168.56.Y` (Ex: `192.168.56.101`). Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Verificação Meta]
+    </summary>
+    <img src="images/meta08.png" alt="Verificação Meta" width="600">
+  </details>
+</div>
 
 ### 4. Teste de Conectividade
 * Do Kali, teste a comunicação com o Metasploitable:
     ```bash
     ping c3 192.168.56.102 
     ```
-* **Resultado Esperado:** Pacotes de resposta (`64 bytes from...`). Se o ping funcionar, seu ambiente está pronto para os ataques!
+* **Resultado Esperado:** 3 pacotes de resposta (`64 bytes from...`). Se o ping funcionar, seu ambiente está pronto para os ataques!
 
 ## 🚀 Enumeração de Serviços (Reconhecimento Ativo)
 Antes de lançar o ataque de força bruta, o primeiro passo é confirmar quais serviços estão ativos no alvo. Neste cenário, faremos uma varredura para identificar o serviço FTP (Porta 21) no Metasploitable 2.
@@ -205,10 +224,10 @@ Antes de lançar o ataque de força bruta, o primeiro passo é confirmar quais s
 Identificar se o serviço FTP (Porta 21) está aberto e pronto para receber conexões, além de confirmar outros serviços comuns.
 
 1.1. **Varredura de Portas e Versões (Nmap)**
-Usaremos o Nmap para realizar uma varredura de portas específica e obter informações detalhadas sobre a versão do serviço (-sV).
+Usaremos o Nmap para realizar uma varredura de portas específica e obter informações detalhadas sobre a versão do serviço (`-sV`).
 
 **Comando de Execução:**
-No terminal do Kali Linux, digite o seguinte comando, substituindo [IP_DO_METASPLOITABLE] pelo endereço real da sua VM alvo:
+No terminal do Kali Linux, digite o seguinte comando, substituindo `[IP_DO_METASPLOITABLE]` pelo endereço real da sua VM alvo:
     ```bash
     nmap -sV -p 21,22,80,445,139 [IP_DO_METASPLOITABLE]
     ```
