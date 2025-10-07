@@ -14,7 +14,7 @@
 * [🎯 Descrição do Projeto](#-descrição-do-projeto)
 * [🛠️ Tecnologias e Ferramentas](#%EF%B8%8F-tecnologias-e-ferramentas)
 * [⚙️ Configuração do Ambiente](#%EF%B8%8F-detalhes-da-instalação-e-versões)
-* [🚀 Cenários de Ataque Documentados](#-cenários-de-ataque-documentados)
+* [🚀 Enumeração de Serviços (Reconhecimento Ativo)](#-cenários-de-ataque-documentados)
 * [💡 Medidas de Mitigação](#medidas-de-mitigação)
 * [🔗 Como Contribuir / Contato](#como-contribuir--contato)
 
@@ -194,11 +194,32 @@ Após iniciar as VMs, é necessário verificar ou definir seus IPs manualmente p
 ### 4. Teste de Conectividade
 * Do Kali, teste a comunicação com o Metasploitable:
     ```bash
-    ping 192.168.56.102 
+    ping c3 192.168.56.102 
     ```
 * **Resultado Esperado:** Pacotes de resposta (`64 bytes from...`). Se o ping funcionar, seu ambiente está pronto para os ataques!
 
-## 🚀 Cenários de Ataque Documentados
+## 🚀 Enumeração de Serviços (Reconhecimento Ativo)
+Antes de lançar o ataque de força bruta, o primeiro passo é confirmar quais serviços estão ativos no alvo. Neste cenário, faremos uma varredura para identificar o serviço FTP (Porta 21) no Metasploitable 2.
+
+**Objetivo**
+Identificar se o serviço FTP (Porta 21) está aberto e pronto para receber conexões, além de confirmar outros serviços comuns.
+
+1.1. **Varredura de Portas e Versões (Nmap)**
+Usaremos o Nmap para realizar uma varredura de portas específica e obter informações detalhadas sobre a versão do serviço (-sV).
+
+**Comando de Execução:**
+No terminal do Kali Linux, digite o seguinte comando, substituindo [IP_DO_METASPLOITABLE] pelo endereço real da sua VM alvo:
+    ```bash
+    nmap -sV -p 21,22,80,445,139 [IP_DO_METASPLOITABLE]
+    ```
+
+
+
+
+
+
+
+
 
 Aqui detalhamos a execução dos ataques e os comandos utilizados. As evidências (screenshots e GIFs) estão disponíveis na pasta `images/`.
 
