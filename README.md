@@ -729,7 +729,7 @@ O Hydra identificará o usuário que corresponde à senha única testada (Ex: ms
   </details>
 </div>
 
-✅ **Validação de Acesso e Credenciais** </br>
+✅ **Validação de Acesso e Credenciais** </br></br>
 Após a execução do Password Spraying com o Hydra ou Medusa, a validação é essencial para confirmar a autenticidade das credenciais descobertas.
 
 **Passos de Comprovação**</br></br>
