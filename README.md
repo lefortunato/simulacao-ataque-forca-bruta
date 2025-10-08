@@ -520,7 +520,7 @@ Obter o Corpo da Requisição HTTP POST para saber quais campos (como `username`
   </details>
 </div>
 
-2.5 Precisamos pegar a resposta para usar no comando Hydra. Temos a resposta na tela, mas podemos pega-la na aba Response. Observe a imagem abaixo.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.5 Precisamos pegar a resposta para usar no comando Hydra. Temos a resposta na tela, mas podemos pega-la na aba Response. Observe a imagem abaixo.
 
 <div align="right">
   <details>
@@ -555,7 +555,11 @@ Observe a imagem abaixo:
 
 **Explicação da String de Ataque:**</br>
 * Corpo da Requisição: username=`^USER^&password=^PASS^&Login=Login`
-* String de Falha (`:F=username`): Este parâmetro diz ao Hydra para procurar a string "username" no código-fonte da página após cada tentativa. Se a string "username" estiver lá, significa que o login falhou (pois o formulário de login foi recarregado). O Hydra considerará sucesso quando essa string não for encontrada (ou quando uma string de sucesso for encontrada).
+* A maneira mais confiável e realista de dizer ao Hydra que o login falhou é instruindo-o a procurar a mensagem de falha mais comum no DVWA, que é o texto "Login Failed" (ou algo semelhante, dependendo do idioma) ou buscando o código de status 200 na página de sucesso. Como o DVWA (Low Security) simplesmente recarrega a página em caso de falha, vamos usar a string de falha que está sempre presente na página de login recarregada: as palavras "Login failed".
+
+**Lógica:** Quando o login falha no DVWA, ele exibe uma mensagem como "Login Failed" e recarrega a página. Se o Hydra encontrar essa string, ele marca como falha.</br>
+**Sucesso:** Quando o login é bem-sucedido, o DVWA carrega uma página diferente, que NÃO contém a string "Login failed". O Hydra, portanto, registra a tentativa como SUCESSO.</br>
+Este método de procurar uma string inexistente na página de sucesso é a técnica mais comum para ataques em que o redirecionamento não ocorre.
 
 
 
