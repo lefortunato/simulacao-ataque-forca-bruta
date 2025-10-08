@@ -505,6 +505,35 @@ Obter o Corpo da Requisição HTTP POST para saber quais campos (como `username`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4 Vá para a aba Rede (ou Network). Limpe a lista se houver muita coisa.</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 Digite um usuário e senha de teste (ex: `teste` e `123`) e clique no botão Login.</br>
 
+2. **Localize e Expanda os Dados POST**
+2.1 Na lista de requisições que aparece, localize a requisição `post` e clique na linha que corresponde ao arquivo `login.php`.</br>
+2.2 Uma nova aba lateral ou painel de detalhes se abrirá a esqueda.</br>
+2.3 Vá para a aba `Request`.</br>
+2.4 Veremos os dados que o navegador enviou ao servidor. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Dados enviados]
+    </summary>
+    <img src="images/Kali13.png" alt="Dados enviados" width="600">
+  </details>
+</div>
+
+3. **Traduzindo para a String do Hydra**
+Precisamos pegar essa estrutura e convertê-la para a string que o Hydra entende, substituindo os valores que mudam (`teste` e `123`) pelas variáveis especiais do Hydra: `^USER^` e `^PASS^`.
+
+A string de dados para o Hydra será:
+
+
+
+
+--------------------------------------------------------------
+
+
+
+
+
 
 
 
@@ -555,15 +584,6 @@ Login: "Login"
 1. Traduzindo para a String do Hydra
 Você precisa pegar essa estrutura e convertê-la para a string que o Hydra entende, substituindo os valores que mudam (teste e 123) pelas variáveis especiais do Hydra: ^USER^ e ^PASS^.
 
-A string de dados para o Hydra será:
-
-Copie o Corpo da Requisição (O Dado Chave):
-
-Dentro da requisição do `login.php`, vá para a aba Cabeçalhos (Headers).
-
-Role para baixo até encontrar a seção "Dados do Formulário" (Form Data) ou "Payload".
-
-Copie o texto completo dessa seção.
 
 Exemplo (DVWA Low Security): O dado capturado será algo como: 
 `username=admin&password=password&Login=Login.`
