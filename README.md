@@ -212,9 +212,9 @@ Após iniciar as VMs, é necessário verificar ou definir seus IPs manualmente p
 
 ### 4. Teste de Conectividade
 * Do Kali, teste a comunicação com o Metasploitable:</br></br>
-    ```bash
-    ping c3 192.168.56.102 
-    ```
+  ```bash
+  ping c3 192.168.56.102 
+  ```
 * **Resultado Esperado:** 3 pacotes de resposta (`64 bytes from...`). Se o ping funcionar, seu ambiente está pronto para os ataques!
 
 ## 🚀 Enumeração de Serviços (Reconhecimento Ativo)
@@ -228,9 +228,9 @@ Usaremos o Nmap para realizar uma varredura de portas específica e obter inform
 
 **Comando de Execução:**</br></br>
 No terminal do Kali Linux, digite o seguinte comando, substituindo `[IP_DO_METASPLOITABLE]` pelo endereço real da sua VM alvo:</br></br>
-    ```bash
-    nmap -sV -p 21,22,80,445,139 [IP_DO_METASPLOITABLE]
-    ```
+  ```bash
+  nmap -sV -p 21,22,80,445,139 [IP_DO_METASPLOITABLE]
+  ```
 | Parâmetro | Função |
 | :--- | :--- |
 | `-sV` | Tenta determinar a versão do serviço rodando nas portas. |
@@ -254,9 +254,9 @@ Para validar a descoberta antes de usar o Hydra ou Medusa, confirmamos a conexã
 Comando de Conexão:
 
 No terminal, tente se conectar:</br></br>
-    ```bash
-    ftp [IP_DO_METASPLOITABLE]
-    ```
+```bash
+ftp [IP_DO_METASPLOITABLE]
+```
 
 Status:
 
@@ -274,41 +274,23 @@ A solicitação imediata de credenciais (`Name:`) confirma que o serviço FTP es
 ## 1.4. Criação das Wordlists (Lista de Tentativas)
 Antes de executar o ataque com Hydra ou Medusa, é necessário criar e popular os arquivos de texto (`wordlists`) que a ferramenta usará para testar usuários e senhas.
 
-Opção 1: Criação Rápida Via Comando `echo` (Terminal)
+**Opção 1:** Criação Rápida Via Comando `echo` (Terminal)</br></br>
 Este método é rápido e ideal para criar listas curtas diretamente no terminal.
 
-A. Wordlist de Usuários (`users.txt`)
-Usamos `>` (criar/sobrescrever) na primeira linha e `>>` (adicionar ao final) nas linhas seguintes:
-    ```bash
-    echo "msfadmin" > wordlists/users.txt
-    echo "root" >> wordlists/users.txt
-    echo "user" >> wordlists/users.txt
-    ```
-B. Wordlist de Senhas (`ftp_passwords.txt`)
+A. Wordlist de Usuários (`users.txt`)</br></br>
+Usamos `>` (criar/sobrescrever) na primeira linha e `>>` (adicionar ao final) nas linhas seguintes:</br></br>
+
+```bash
+echo "msfadmin" > wordlists/users_ftp.txt
+echo "root" >> wordlists/users_ftp.txt
+echo "user" >> wordlists/users_ftp.txt
+```
+
+
+B. Wordlist de Senhas (`ftp_passwords.txt`)</br></br>
     ```bash
     echo "msfadmin" > wordlists/pass.txt
     echo "password" >> wordlists/pass.txt
     echo "123456" >> wordlists/pass.txt
     ```
 
-
-
-
-### 1. Força Bruta em Serviço FTP
-
-| Detalhe | Valor |
-| :--- | :--- |
-| **Alvo** | Metasploitable 2 (Serviço FTP - Porta 21) |
-| **Ferramenta** | **Hydra** |
-| **Wordlist** | `wordlists/ftp_passwords.txt` |
-
-<div align="center">
-    <img src="images/ftp_attack_gif.gif" alt="GIF demonstrando ataque FTP com Hydra" width="600"/>
-    <p><i>(Substituir pela sua GIF ou screenshot)</i></p>
-</div>
-
-**Comando Utilizado:**
-
-```bash
-# Exemplo de comando que utilizou um usuário (-l) e uma lista de senhas (-P)
-hydra -l msfadmin -P wordlists/pass_simples.txt ftp://[IP_METASPLOITABLE] -V
