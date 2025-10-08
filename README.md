@@ -346,7 +346,16 @@ password
 Com esses dois arquivos criados e preenchidos no diretório correto, você garante que o comando Hydra ou Medusa terá todas as entradas necessárias para a simulação do ataque.
 
 ## 💥 1. Ataque de Força Bruta em Serviço FTP com Hydra
-Continuando a partir do serviço que identificamos como aberto (Porta 21), agora simularemos um ataque de força bruta usando a ferramenta Hydra para descobrir as credenciais de login.
+Continuando a partir do serviço que identificamos como aberto (Porta 21), agora simularemos um ataque de força bruta usando a ferramenta Hydra para descobrir as credenciais de login. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Descobrir credencial]
+    </summary>
+    <img src="images/Kali07.png" alt="Descobrir credencial" width="600">
+  </details>
+</div>
 
 **1.1. Aplicando Teste de Força Bruta - FTP**
 | Detalhe | Valor |
@@ -381,13 +390,88 @@ Em resumo, o comando instrui o Hydra a:</br>
 4. Mostrar todos os testes na tela (`-V`) e salvar o resultado final no arquivo `Resultado.txt`.</br>
 
 1.3. **Validação de Acesso e Credenciais**
-Credenciais Descobertas: Após a execução, o Hydra encontrou com sucesso a credencial: `[USUÁRIO_ENCONTRADO]`/`[SENHA_ENCONTRADA]`.
+Credenciais Descobertas: Após a execução, o Hydra encontrou com sucesso a credencial: `[USUÁRIO_ENCONTRADO]`/`[SENHA_ENCONTRADA]`. Observe a imagem abaixo.
 
-Comprovação: O acesso foi validado usando o comando ftp seguido do login bem-sucedido.
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Credencial descoberta]
+    </summary>
+    <img src="images/Kali08.png" alt="Credencial descoberta" width="600">
+  </details>
+</div>
 
-Evidências: Veja images/ftp_success.png.
+Comprovação: Neste passo utilizaremos o comando `ftp://[IP_DO_METASPLOITABLE]`, e vamos inserir a credencial encontrada. O acesso foi validado usando o comando `ftp` seguido do login bem-sucedido. Observe a imagem abaixo.
 
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Acesso FTP]
+    </summary>
+    <img src="images/Kali08.png" alt="Acesso FTP" width="600">
+  </details>
+</div>
 
+💥 **2. Ataque de Força Bruta com Medusa (FTP)** </br></br>
+Neste cenário, demonstramos o uso da ferramenta Medusa para realizar um ataque rápido e eficaz contra o serviço FTP do Metasploitable 2.
 
+**Objetivo**</br>
+Descobrir as credenciais de login do FTP (`porta 21`) usando `wordlists` de usuários e senhas.
 
+2.1. **Preparação das Wordlists (`Já criadas no ataque usando Hydra`)**</br>
+Arquivo de Usuários (users.txt): Deve conter os usuários a serem testados (ex: msfadmin, user, root).</br>
+Arquivo de Senhas (pass.txt): Deve conter as senhas a serem testadas (ex: msfadmin, password, 123456).
+
+2.2. **Execução do Ataque com Medusa**</br>
+O Medusa é eficiente para ataques paralelos e pode ser usado de forma semelhante ao Hydra. Usaremos os parâmetros para definir o alvo, as listas e o protocolo.
+
+**Comando de Execução:**
+No terminal do Kali Linux, digite o seguinte comando:
+```bash
+medusa -h 192.168.56.102 -U wordlists/users.txt -P wordlists/pass.txt -M ftp -t 2 -O Resultado.txt
+```
+🔬 **Detalhamento do Comando Medusa**
+|Elemento do Comando | Função | Explicação |
+| :---: | :---:| :---:|
+| `medusa` | Ferramenta | Chama o programa Medusa, projetado para realizar ataques de força bruta rápidos e paralelos contra diversos serviços de rede. |
+| `-h 192.168.56.102` | Host Alvo | Define o endereço IP (`-h` de host) do servidor que você está tentando acessar (o Metasploitable 2, neste caso). |
+| `-U wordlists/users.txt` | Lista de Senhas | Define o caminho (`-P` de Passwordlist) para o arquivo que contém a lista de senhas a serem testadas, uma por linha. |
+| `-P wordlists/pass.txt` | Lista de Senhas | Define o caminho (`-P` de Password List) para o arquivo que contém a lista de senhas a serem testadas (uma por linha). |
+| `-M ftp` | Módulo/Serviço | Especifica o módulo (`-M` de Module) ou protocolo que será atacado. Aqui, é o FTP (File Transfer Protocol), que é o serviço de transferência de arquivos. |
+| `-t 2` | Tarefas/Threads | Define o número de conexões simultâneas (`threads`) que o Medusa usará. O valor 2 indica que ele tentará 2 logins ao mesmo tempo, aumentando a velocidade do ataque sem sobrecarregar o alvo. |
+| `-o Resultado.txt` | Saída para Arquivo | Direciona a saída completa (`-o` de Output), incluindo logs e credenciais encontradas, para um arquivo chamado `Resultado.txt`. Isso é útil para análise posterior. |
+
+🎯 **Objetivo do Comando**</br></br>
+O comando instrui o Medusa a usar as listas de usuários e senhas para tentar forçar o acesso ao serviço FTP rodando no IP 192.168.56.102, fazendo isso com 2 tentativas paralelas, e salvando o log de todas as ações no arquivo `Resultado.txt`. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Descobrir credencial]
+    </summary>
+    <img src="images/Kali10.png" alt="Descobrir credencial" width="600">
+  </details>
+</div>
+
+2.3. **Análise do Resultado**</br>
+Após a conclusão do ataque, é possível visualizar no no terminal o resultado do comando. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Credencial descoberta]
+    </summary>
+    <img src="images/Kali11.png" alt="Credencial descoberta" width="600">
+  </details>
+</div>
+
+O Medusa salva o log no arquivo Resultado.txt. Para visualizar a credencial descoberta, você pode usar um editor de texto ou um leitor de terminal:</br></br>
+**Comando para Visualizar o Log:**
+```bash
+cat Resultado.txt 
+# OU
+less Resultado.txt
+```
+**Resultado Esperado:**
+A linha final do log confirmará o sucesso do ataque, exibindo a combinação correta (ex: msfadmin:msfadmin), confirmando o sucesso da simulação.
 
