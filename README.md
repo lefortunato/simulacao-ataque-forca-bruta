@@ -655,3 +655,71 @@ Welcome123
 msfadmin
 ```
 Com os dois arquivos prontos (`users_smb.txt` e `senhas_spray.txt`), temos toda a preparação documentada para a execução do ataque em SMB!
+
+💣 4.4 **Execução e Validação dos Ataques**</br></br>
+Para garantir a clareza didática, detalhei o processo de execução de cada ferramenta, começando pelo ataque de Password Spraying no SMB via Medusa.
+
+4.4.1. **Ataque 1: Password Spraying em SMB (Medusa)**</br></br>
+Este ataque simula a tentativa de usar senhas comuns (password) contra múltiplos usuários para contornar mecanismos de bloqueio de conta.
+
+**Passo a Passo da Execução**</br>
+* **Executar o Medusa:** </br>
+No terminal, execute o comando, usando o módulo smb e definindo 2 threads simultâneas.
+```bash
+medusa -h 192.168.56.101 -U wordlists/users_smb.txt -P wordlists/senhas_spray.txt -M smbnt -t 2 -O smb_resultado.txt
+```
+
+* **Analisar a Saída:**</br>
+O comando salva a saída completa no arquivo smb_resultado.txt. </br>
+
+| Parâmetro | Função |
+| :--- | :--- |
+| `-h` | Define o Host (endereço IP do Metasploitable). |
+| `-U` | Define o arquivo de Usuários (a lista enumerada).|
+| `-P` | Define o arquivo de passwords (a lista enumerada). |
+| `-M smb` | Define o Módulo (Protocolo) a ser atacado. |
+| `-t 4` | Define as conexões simultâneas (threads). |
+| `-O` | Salva o resultado do log em um arquivo. |
+
+* **Credenciais Descobertas:** </br>
+O Medusa identificará o usuário que corresponde à senha única testada (Ex: msfadmin:password). Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Credenciais descobertas]
+    </summary>
+    <img src="images/Kali17.png" alt="Credenciais descobertas" width="600">
+  </details>
+</div>
+
+4.4.2. **Ataque 2: Password Spraying em SMB (Hydra)**</br></br>
+Este ataque simula a tentativa de usar senhas comuns (password) contra múltiplos usuários para contornar mecanismos de bloqueio de conta.
+
+**Passo a Passo da Execução**</br>
+**Executar o Hydra:** No terminal, execute o comando, usando o módulo smb e definindo 2 threads simultâneas.
+**Analisar a Saída:** O comando salva a saída completa no arquivo smb_resultado.txt.
+```bash
+medusa -h 192.168.56.101 -U wordlists/users_smb.txt -P wordlists/senhas_spray.txt -M smbnt -t 2 -O smb_resultado.txt
+```
+| Parâmetro | Função |
+| :--- | :--- |
+| `-h` | Define o Host (endereço IP do Metasploitable). |
+| `-U` | Define o arquivo de Usuários (a lista enumerada).|
+| `-P` | Define o arquivo de passwords (a lista enumerada). |
+| `-M smb` | Define o Módulo (Protocolo) a ser atacado. |
+| `-t 4` | Define as conexões simultâneas (threads). |
+| `-O` | Salva o resultado do log em um arquivo. |
+
+**Credenciais Descobertas:** </br></br>
+O Medusa identificará o usuário que corresponde à senha única testada (Ex: msfadmin:password). Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Credenciais descobertas]
+    </summary>
+    <img src="images/Kali17.png" alt="Credenciais descobertas" width="600">
+  </details>
+</div>
+
