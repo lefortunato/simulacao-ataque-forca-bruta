@@ -589,12 +589,7 @@ Para demonstrar a riqueza de informações que podemos obter de um serviço SMB 
 ```bash
 enum4linux -a 192.168.56.101
 ```
-O parâmetro -a (All) instrui o enum4linux a executar uma série de verificações, incluindo:
-* Enumeração de Usuários (RID): Retorna a lista completa de usuários do sistema.
-* Listagem de Compartilhamentos (Shares): Identifica quais pastas estão acessíveis.
-* Informações do Sistema Operacional: Detalhes sobre a versão do Samba/SO.
-
-Foco: O resultado deste comando, embora extenso, contém a seção que lista os usuários válidos do sistema, que é o nosso dado-chave para a wordlist.. Observe a imagem abaixo.
+Observe a imagem abaixo.
 
 <div align="right">
   <details>
@@ -604,9 +599,31 @@ Foco: O resultado deste comando, embora extenso, contém a seção que lista os 
     <img src="images/Kali16.png" alt="Enumeração de usuários" width="600">
   </details>
 </div>
-O problema deste retorno é que vem de uma forma poluída, o que dificulta copiarmos os usuários e gerarmos o arquivo `smb_users.txt`, que precisaremos para disparar o ataque. </br>
-Agora vamos montar um comando para robusto para nos ajudar a listar apenas os usuários.
 
-🔬 Detalhamento Completo do Comando (Pipeline)
-O comando é um pipeline, onde a saída de cada programa (|) se torna a entrada do próximo.
+O parâmetro -a (All) instrui o enum4linux a executar uma série de verificações, incluindo:
+* Enumeração de Usuários (RID): Retorna a lista completa de usuários do sistema.
+* Listagem de Compartilhamentos (Shares): Identifica quais pastas estão acessíveis.
+* Informações do Sistema Operacional: Detalhes sobre a versão do Samba/SO.
+
+Foco: O resultado deste comando, embora extenso, contém a seção que lista os usuários válidos do sistema, que é o nosso dado-chave para a wordlist. 
+O problema deste retorno é que vem de uma forma poluída, o que dificulta copiarmos os usuários e gerarmos o arquivo `smb_users.txt`, que precisaremos para disparar o ataque. </br></br>
+
+🧹 4.2 **Extração e Limpeza da Wordlist**</br></br>
+Devido ao excesso de informação, é necessário um comando de filtragem (como o `grep`, `awk` e `tr` que definimos) para extrair apenas os nomes de usuários do resultado e criar a wordlist limpa (`users_smb.txt`).</br></br>
+Agora montaremos um comando robusto para nos ajudar a listar apenas os usuários.</br></br>
+
+**Comando de Filtragem**</br></br>
+```bash
+eenum4linux -U 192.168.56.101 | grep "user:" | awk '{print $(NF-2)}' | tr -d '[]' > wordlists/users_smb.txt
+```
+|Comando | Ferramenta | O que Faz | Objetivo no Pipeline |
+| :---: | :---:| :---:| :---:|
+| `enum4linux -U [IP]` | enum4linux | Executa a enumeração de usuários (-U) no host SMB do Metasploitable. | Gera a lista bruta e formatada de todos os usuários. |
+| ** | grep "user:"`** | grep | Filtra a saída. |
+| ** | awk '{print $(NF-2)}'`** | awk | Filtra colunas. |
+| ** | tr -d '[]'`** | tr | Tradução/Remoção. |
+| > users_smb.txt | Redirecionamento |Salva a saída final. | Redireciona o resultado final limpo (apenas nomes de usuário) para um novo arquivo chamado users_smb.txt. |
+
+🎯 **Objetivo Final**</br></br>
+O comando completo executa a enumeração, filtra o cabeçalho, isola o nome de usuário e, em seguida, remove a sujeira (colchetes), criando uma wordlist limpa, pronta para o ataque Password Spraying do Medusa.
 
