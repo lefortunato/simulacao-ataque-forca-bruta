@@ -580,14 +580,21 @@ Ataques de Força Bruta são definidos por tentar inúmeras combinações de sen
 A lógica por trás do Password Spraying é puramente tática: ele tenta contornar os mecanismos de bloqueio de conta. A maioria dos sistemas bloqueia um usuário após 3 a 5 tentativas de senha erradas. Ao usar uma senha comum contra 100 usuários diferentes, você maximiza suas chances de sucesso sem nunca bloquear uma conta individual.</br></br>
 Portanto, o cenário do SMB é um excelente exemplo de como a força bruta evolui para ser mais eficiente e furtiva em cenários reais de auditoria. </br>
 
-4.1. **Enumeração de Usuários (Reconhecimento)**
-Antes de atacar, precisamos de uma lista de usuários válidos. O Metasploitable 2 permite a enumeração simples de usuários.
+🔍 4.1. **Enumeração Detalhada de Usuários (Reconhecimento Ativo)** </br></br>
+Antes de realizar o ataque de Password Spraying, o primeiro passo é a enumeração, onde buscamos obter uma lista de usuários válidos do alvo.</br>
+O Metasploitable 2 permite essa enumeração de forma simples através do serviço SMB (Samba).</br>
 
-Usaremos o `enum4linux` para tentar obter usuários do serviço Samba/SMB. Mas primeiro vamos conhecer e analisar a saida do comando abaixo.
+**Análise do Comando `enum4linux -a`** </br></br>
+Para demonstrar a riqueza de informações que podemos obter de um serviço SMB mal configurado, iniciaremos com o comando de enumeração "all":
 ```bash
 enum4linux -a 192.168.56.101
 ```
-Este comando retorna muitas informações, inclusive de usuários. Observe a imagem abaixo.
+O parâmetro -a (All) instrui o enum4linux a executar uma série de verificações, incluindo:
+* Enumeração de Usuários (RID): Retorna a lista completa de usuários do sistema.
+* Listagem de Compartilhamentos (Shares): Identifica quais pastas estão acessíveis.
+* Informações do Sistema Operacional: Detalhes sobre a versão do Samba/SO.
+
+Foco: O resultado deste comando, embora extenso, contém a seção que lista os usuários válidos do sistema, que é o nosso dado-chave para a wordlist.. Observe a imagem abaixo.
 
 <div align="right">
   <details>
