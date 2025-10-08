@@ -787,7 +787,7 @@ Este projeto foi desenvolvido como parte de um desafio prático de segurança ci
 | Botão | Ação |
 | :--- | :--- |
 | ⭐ Dar Estrela | Se gostou do projeto, considere dar uma estrela no GitHub. |
-| 🤝 Conecte-se | **<a href="https://www.linkedin.com/in/leandro-antonio-fortunato/" target="_blank">🟦 Visite meu Linkedin 🟦</a>**  |
+| 🤝 Conecte-se | **<a href="https://www.linkedin.com/in/leandro-antonio-fortunato/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white" alt="Link para o LinkedIn"></a>**  |
 | 📧 Fale Comigo | 📧 [E-mail para contato](mailto:leandroantonio.fortunato@hotmail.com) |
 
 
