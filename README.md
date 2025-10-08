@@ -368,7 +368,7 @@ Continuando a partir do serviço que identificamos como aberto (Porta 21), agora
 | **Wordlist** | wordlists/users.txt |
 | **Wordlist** | wordlists/pass.txt |
 
-1.2. **Comando Utilizado**
+1.2. **Comando Utilizado**</br>
 Utilizamos o Hydra fornecendo uma lista de usuários e uma lista de senhas, indicando o protocolo (`ftp`) e o endereço do alvo.
 ```bash
 hydra -L wordlists/users_ftp.txt -P wordlists/ftp_passwords.txt ftp://[IP_DO_METASPLOITABLE] -t 4 -V -o Resultado.txt
