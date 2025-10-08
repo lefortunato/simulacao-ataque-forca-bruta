@@ -757,7 +757,7 @@ Neste ponto fiz 2 testes:
 </div>
 
 
-🛡️ **Medidas de Mitigação e Recomendações de Segurança** </br></br>
+## 🛡️ **Medidas de Mitigação e Recomendações de Segurança** </br></br>
 Com base nos ataques de Força Bruta simulados (`FTP`, `DVWA`, `SMB`), as seguintes medidas de mitigação são essenciais para fortalecer a segurança do ambiente e prevenir a descoberta automatizada de credenciais.
 
 1. **Prevenção Geral (Todos os Serviços)**</br>
