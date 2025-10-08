@@ -359,18 +359,33 @@ Continuando a partir do serviço que identificamos como aberto (Porta 21), agora
 1.2. **Comando Utilizado**
 Utilizamos o Hydra fornecendo uma lista de usuários e uma lista de senhas, indicando o protocolo (`ftp`) e o endereço do alvo.
 ```bash
-hydra -L wordlists/users_ftp.txt -P wordlists/ftp_passwords.txt ftp://[IP_DO_METASPLOITABLE] -V
+hydra -L wordlists/users_ftp.txt -P wordlists/ftp_passwords.txt ftp://[IP_DO_METASPLOITABLE] -t 4 -V -o Resultado.txt
 ```
+🔬 **Detalhamento do Comando Hydra**
 |Elemento do Comando | Função | Explicação |
 | :---: | :---:| :---:|
 | `hydra` | Ferramenta | Chama o programa Hydra (Hídra), o principal cracker de logins de rede. |
-| `-L wordlists/users_ftp.txt` | Lista de Usuários | Define o caminho (-L de List) para o arquivo que contém a lista de nomes de usuário a serem testados (um por linha). |
-| `-P wordlists/ftp_passwords.txt` | Lista de Senhas | Define o caminho (-P de Password List) para o arquivo que contém a lista de senhas a serem testadas (uma por linha). |
-| `ftp://[IP_DO_METASPLOITABLE]` | Alvo e Serviço | Especifica o protocolo (ftp) e o endereço IP do servidor alvo (o Metasploitable). |
-| `-t 4` | Tarefas/Threads | Define o número de tarefas ou conexões simultâneas (threads) que o Hydra tentará abrir contra o alvo. O valor 4 significa que ele tentará 4 logins ao mesmo tempo, aumentando a velocidade. |
-| `-V` | Modo Verbose | Coloca o Hydra em modo detalhado (Verbose), o que faz com que ele exiba na tela cada tentativa de login (usuário e senha) que está sendo testada. |
-| `-o Resultado.txt` | Saída para Arquivo | Direciona a saída completa (-o de Output), incluindo logs e credenciais encontradas, para um arquivo chamado Resultado.txt. Isso é útil para análise posterior. |
+| `-L wordlists/users_ftp.txt` | Lista de Usuários | Define o caminho (`-L` de List) para o arquivo que contém a lista de nomes de usuário a serem testados (um por linha). |
+| `-P wordlists/ftp_passwords.txt` | Lista de Senhas | Define o caminho (`-P` de Password List) para o arquivo que contém a lista de senhas a serem testadas (uma por linha). |
+| `ftp://[IP_DO_METASPLOITABLE]` | Alvo e Serviço | Especifica o protocolo (`ftp`) e o endereço IP do servidor alvo (o Metasploitable). |
+| `-t 4` | Tarefas/Threads | Define o número de tarefas ou conexões simultâneas (`threads`) que o Hydra tentará abrir contra o alvo. O valor `4` significa que ele tentará 4 logins ao mesmo tempo, aumentando a velocidade. |
+| `-V` | Modo Verbose | Coloca o Hydra em modo detalhado (`Verbose`), o que faz com que ele exiba na tela cada tentativa de login (usuário e senha) que está sendo testada. |
+| `-o Resultado.txt` | Saída para Arquivo | Direciona a saída completa (`-o` de Output), incluindo logs e credenciais encontradas, para um arquivo chamado `Resultado.txt`. Isso é útil para análise posterior. |
 
+🎯 **Objetivo do Comando**</br></br>
+Em resumo, o comando instrui o Hydra a:</br>
+
+1. Carregar a lista de usuários e a lista de senhas.</br>
+2. Tentar combinações dessas listas contra o serviço FTP no alvo especificado.</br>
+3. Fazer isso rapidamente, usando 4 conexões simultâneas.</br>
+4. Mostrar todos os testes na tela (`-V`) e salvar o resultado final no arquivo `Resultado.txt`.</br>
+
+1.3. **Validação de Acesso e Credenciais**
+Credenciais Descobertas: Após a execução, o Hydra encontrou com sucesso a credencial: `[USUÁRIO_ENCONTRADO]`/`[SENHA_ENCONTRADA]`.
+
+Comprovação: O acesso foi validado usando o comando ftp seguido do login bem-sucedido.
+
+Evidências: Veja images/ftp_success.png.
 
 
 
