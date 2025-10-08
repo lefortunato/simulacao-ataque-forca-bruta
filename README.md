@@ -167,7 +167,7 @@ Para ambas as VMs (Kali Linux e Metasploitable 2):
 
 1.  **Configurações -** Selecione a VM e vá em `Configurações` (Settings).
 2.  **Rede -** Selecione a seção `Rede` (Network).
-3.  **Adaptador 1 -** Mude o campo `Conectado a:` para **"Rede Somente Host"** (`Host-only Adapter`). Observe a imagem abaixo.
+3.  **Adaptador 1 -** Mude o campo `Ligado a:` para **"Rede Somente Host"** (`Host-only Adapter`). Observe a imagem abaixo.
 
 <div align="right">
   <details>
