@@ -487,24 +487,75 @@ Antes de lançar o ataque de força bruta com Hydra, precisamos entender como o 
 **Objetivo**</br>
 Obter o Corpo da Requisição HTTP POST para saber quais campos (como `username`, `password` e o botão `Login`) o Hydra deve preencher.
 
+1. **Configure e Capture a Requisição**</br>
+1.1 Abra o navegador (Firefox ou Chrome no Kali).</br>
+1.2 Acesse o endereço de login do DVWA: `http://192.168.56.101/dvwa/login.php` (Substitua o IP se necessário).</br>
+1.3 Pressione `Ctrl + Shift + I` (atalho padrão para Chrome/Firefox no Linux/Windows) para abrir o painel de ferramentas do desenvolvedor. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Modo desenvolvedor]
+    </summary>
+    <img src="images/Kali12.png" alt="Modo desenvolvedor" width="600">
+  </details>
+</div>
+
+</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4 Vá para a aba Rede (ou Network). Limpe a lista se houver muita coisa.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 Digite um usuário e senha de teste (ex: `teste` e `123`) e clique no botão Login.</br>
+
+
+
+
+
+
 **Passos para obter o corpo da requisição**</br>
 1. **Acesse a Página de Login:**
 Abra o navegador (Firefox ou Chrome no Kali) e acesse o endereço de login do DVWA: `http://192.168.56.101/dvwa/login.php` (Substitua o IP se necessário). 
 
 2. **Abra as Ferramentas de Desenvolvedor:**
-Pressione `Ctrl + Shift + I` (atalho padrão para Chrome/Firefox no Linux/Windows) para abrir o painel de ferramentas do desenvolvedor.
+Pressione `Ctrl + Shift + I` (atalho padrão para Chrome/Firefox no Linux/Windows) para abrir o painel de ferramentas do desenvolvedor. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Modo desenvolvedor]
+    </summary>
+    <img src="images/Kali12.png" alt="Modo desenvolvedor" width="600">
+  </details>
+</div>
 
 Selecione a aba Rede (ou Network).
 
 Capture a Tentativa de Login:
 
-Limpe a lista de requisições na aba Rede.
-
-Digite um usuário e senha de teste (ex: `admin` e `password`) e clique no botão Login.
+Limpe a lista de requisições na aba Rede (Network) .
+Digite um usuário e senha de teste (ex: `teste` e `123`) e clique no botão Login.
 
 Localize a Requisição POST:
-
 Na lista que aparecer na aba Rede, clique na requisição que foi enviada ao `login.php`.
+No lado esquerdo, clique em request para visualizar os parâmetros que a aplicação espera receber. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Visualizar parâmetros]
+    </summary>
+    <img src="images/Kali13.png" alt="Visualizar parâmetros" width="600">
+  </details>
+</div>
+
+**Os dados que o seu navegador enviou ao servidor são:**
+```bash
+username: "teste"
+password: "123"
+Login: "Login"
+```
+1. Traduzindo para a String do Hydra
+Você precisa pegar essa estrutura e convertê-la para a string que o Hydra entende, substituindo os valores que mudam (teste e 123) pelas variáveis especiais do Hydra: ^USER^ e ^PASS^.
+
+A string de dados para o Hydra será:
 
 Copie o Corpo da Requisição (O Dado Chave):
 
