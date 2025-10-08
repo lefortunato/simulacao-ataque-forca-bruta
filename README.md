@@ -788,7 +788,7 @@ Este projeto foi desenvolvido como parte de um desafio prático de segurança ci
 | :--- | :--- |
 | ⭐ Dar Estrela | Se gostou do projeto, considere dar uma estrela no GitHub. |
 | 🤝 Conecte-se | **<a href="https://www.linkedin.com/in/leandro-antonio-fortunato/" target="_blank">🟦 Visite meu Linkedin 🟦</a>**  |
-| 📧 Fale Comigo | 📧 [E-mail para contato](leandroantonio.fortunato@hotmail.com) |
+| 📧 Fale Comigo | 📧 [E-mail para contato](mailto:leandroantonio.fortunato@hotmail.com) |
 
 
 
