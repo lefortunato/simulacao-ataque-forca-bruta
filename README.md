@@ -15,6 +15,9 @@
 * [🛠️ Tecnologias e Ferramentas](#%EF%B8%8F-tecnologias-e-ferramentas)
 * [⚙️ Configuração do Ambiente](#%EF%B8%8F-detalhes-da-instalação-e-versões)
 * [🚀 Enumeração de Serviços (Reconhecimento Ativo)](#-cenários-de-ataque-documentados)
+* [📋 Criação das Wordlists (Lista de Tentativas)]()
+* [💥 1. Ataque de Força Bruta em Serviço FTP com Hydra]()
+* [💥 2. Ataque de Força Bruta em Serviço FTP com Medusa]()
 * [💡 Medidas de Mitigação](#medidas-de-mitigação)
 * [🔗 Como Contribuir / Contato](#como-contribuir--contato)
 
@@ -271,7 +274,7 @@ A solicitação imediata de credenciais (`Name:`) confirma que o serviço FTP es
   </details>
 </div>
 
-## 1.4. Criação das Wordlists (Lista de Tentativas)
+## 📋 Criação das Wordlists (Lista de Tentativas)
 Antes de executar o ataque com Hydra ou Medusa, é necessário criar e popular os arquivos de texto (`wordlists`) que a ferramenta usará para testar usuários e senhas.
 
 **Opção 1:** Criação Rápida Via Comando `echo` (Terminal)</br></br>
@@ -412,7 +415,7 @@ Comprovação: Neste passo utilizaremos o comando `ftp://[IP_DO_METASPLOITABLE]`
   </details>
 </div>
 
-💥 **2. Ataque de Força Bruta com Medusa (FTP)** </br></br>
+💥 **2. Ataque de Força Bruta em Serviço FTP com Medusa** </br></br>
 Neste cenário, demonstramos o uso da ferramenta Medusa para realizar um ataque rápido e eficaz contra o serviço FTP do Metasploitable 2.
 
 **Objetivo**</br>
