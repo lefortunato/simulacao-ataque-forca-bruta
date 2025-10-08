@@ -608,22 +608,50 @@ O parâmetro -a (All) instrui o enum4linux a executar uma série de verificaçõ
 Foco: O resultado deste comando, embora extenso, contém a seção que lista os usuários válidos do sistema, que é o nosso dado-chave para a wordlist. 
 O problema deste retorno é que vem de uma forma poluída, o que dificulta copiarmos os usuários e gerarmos o arquivo `smb_users.txt`, que precisaremos para disparar o ataque. </br></br>
 
-🧹 4.2 **Extração e Limpeza da Wordlist**</br></br>
+🧹 4.2 **Extração e Limpeza da Wordlist de usuários**</br></br>
 Devido ao excesso de informação, é necessário um comando de filtragem (como o `grep`, `awk` e `tr` que definimos) para extrair apenas os nomes de usuários do resultado e criar a wordlist limpa (`users_smb.txt`).</br></br>
 Agora montaremos um comando robusto para nos ajudar a listar apenas os usuários.</br></br>
 
 **Comando de Filtragem**</br>
 ```bash
-eenum4linux -U 192.168.56.101 | grep "user:" | awk '{print $(NF-2)}' | tr -d '[]' > wordlists/users_smb.txt
+enum4linux -U 192.168.56.101 | grep "user:" | awk '{print $(NF-2)}' | tr -d '[]' > wordlists/users_smb.txt
 ```
 |Comando | Ferramenta | O que Faz | Objetivo no Pipeline |
 | :---: | :---:| :---:| :---:|
 | `enum4linux -U [IP]` | enum4linux | Executa a enumeração de usuários (-U) no host SMB do Metasploitable. | Gera a lista bruta e formatada de todos os usuários. |
-| ** | grep "user:"`** | grep | Filtra a saída. |
-| ** | awk '{print $(NF-2)}'`** | awk | Filtra colunas. |
-| ** | tr -d '[]'`** | tr | Tradução/Remoção. |
-| > users_smb.txt | Redirecionamento |Salva a saída final. | Redireciona o resultado final limpo (apenas nomes de usuário) para um novo arquivo chamado users_smb.txt. |
+| ** | grep "user:"`** | `grep` | Filtra a saída. |
+| ** | awk '{print $(NF-2)}'`** | `awk` | Filtra colunas. |
+| ** | tr -d '[]'`** | `tr` | Tradução/Remoção. |
+| > users_smb.txt | Redirecionamento | Salva a saída final. | Redireciona o resultado final limpo (apenas nomes de usuário) para um novo arquivo chamado users_smb.txt. |
 
 🎯 **Objetivo Final**</br></br>
 O comando completo executa a enumeração, filtra o cabeçalho, isola o nome de usuário e, em seguida, remove a sujeira (colchetes), criando uma wordlist limpa, pronta para o ataque Password Spraying.
 
+🔑 4.3 **Criação da Wordlist de Senhas (senhas_spray.txt)** </br></br>
+No ataque de Password Spraying, usamos uma lista de senhas curtas e comuns contra muitos usuários. O arquivo será criado diretamente no terminal usando o comando `echo -e`, que interpreta caracteres especiais como a quebra de linha (`\n`).
+
+4.3.1. **Comando de Execução**</br>
+No terminal do Kali Linux, execute o comando abaixo para criar o arquivo e inserir as senhas (cada senha ficará em uma nova linha devido ao `\n`).
+```bash
+echo -e "password\n123456\nWelcome123\nmsfadmin" > wordlists/senhas_spray.txt
+```
+| Parâmetro | Função |
+| :--- | :--- |
+| `echo -e` | Chama o comando `echo` com a opção `-e`, que habilita a interpretação de sequências de escape (como `\n`). |
+| `"..."` | A string de senhas.|
+| `\n` | Quebra de Linha: Garante que cada senha esteja em uma linha separada, um requisito para as wordlists do Medusa/Hydra. |
+| `>` | Redireciona a saída e cria/sobrescreve o arquivo `senhas_spray.txt` no diretório wordlists/. |
+
+4.3.2. **Validação do Arquivo**</br>
+Para garantir que o arquivo foi criado corretamente, com as senhas em linhas separadas, você pode usar o comando cat:
+```bash
+cat wordlists/senhas_spray.txt
+```
+**Resultado Esperado:**
+```bash
+password
+123456
+Welcome123
+msfadmin
+```
+Com os dois arquivos prontos (`users_smb.txt` e `senhas_spray.txt`), temos toda a preparação documentada para a execução do ataque em SMB!
