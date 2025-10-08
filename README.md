@@ -520,8 +520,19 @@ Obter o Corpo da Requisição HTTP POST para saber quais campos (como `username`
   </details>
 </div>
 
+2.5 Precisamos pegar a resposta para usar no comando Hydra. Temos a resposta na tela, mas podemos pega-la na aba Response. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Resposta do envio]
+    </summary>
+    <img src="images/Kali15.png" alt="Resposta do envio" width="600">
+  </details>
+</div>
+
 3. **Traduzindo para a String do Hydra**</br>
-Precisamos pegar essa estrutura e convertê-la para a string que o Hydra entenda, substituindo os valores que mudam (`teste` e `123`) pelas variáveis especiais do Hydra: `^USER^` e `^PASS^`.
+Precisamos pegar essas estruturas e convertê-las para a string que o Hydra entenda, substituindo os valores que mudam (`teste` e `123`) pelas variáveis especiais do Hydra: `^USER^` e `^PASS^`, e informando o dado de saida `Login failed`.
 
 A string de dados para o Hydra será:
 ```bash
@@ -530,7 +541,7 @@ username=^USER^&password=^PASS^&Login=Login
 3.1 **Comando Hydra Completo (DVWA)**</br>
 Com base nos dados encontrados, este será o comando completo que usaremos:
 ```bash
-hydra -L wordlists/users.txt -P wordlists/pass.txt 192.168.56.101 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=username"
+hydra -L wordlists/users.txt -P wordlists/pass.txt 192.168.56.101 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:Login failed"
 ```
 Observe a imagem abaixo:
 <div align="right">
@@ -542,73 +553,10 @@ Observe a imagem abaixo:
   </details>
 </div>
 
+**Explicação da String de Ataque:**</br>
+* Corpo da Requisição: username=`^USER^&password=^PASS^&Login=Login`
+* String de Falha (`:F=username`): Este parâmetro diz ao Hydra para procurar a string "username" no código-fonte da página após cada tentativa. Se a string "username" estiver lá, significa que o login falhou (pois o formulário de login foi recarregado). O Hydra considerará sucesso quando essa string não for encontrada (ou quando uma string de sucesso for encontrada).
 
-
-Explicação da String de Ataque:
-Corpo da Requisição: username=^USER^&password=^PASS^&Login=Login
-
-String de Falha (:F=username): Este parâmetro diz ao Hydra para procurar a string "username" no código-fonte da página após cada tentativa. Se a string "username" estiver lá, significa que o login falhou (pois o formulário de login foi recarregado). O Hydra considerará sucesso quando essa string não for encontrada (ou quando uma string de sucesso for encontrada).
---------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-**Passos para obter o corpo da requisição**</br>
-1. **Acesse a Página de Login:**
-Abra o navegador (Firefox ou Chrome no Kali) e acesse o endereço de login do DVWA: `http://192.168.56.101/dvwa/login.php` (Substitua o IP se necessário). 
-
-2. **Abra as Ferramentas de Desenvolvedor:**
-Pressione `Ctrl + Shift + I` (atalho padrão para Chrome/Firefox no Linux/Windows) para abrir o painel de ferramentas do desenvolvedor. Observe a imagem abaixo.
-
-<div align="right">
-  <details>
-    <summary font-weight: bold;">
-      [Modo desenvolvedor]
-    </summary>
-    <img src="images/Kali12.png" alt="Modo desenvolvedor" width="600">
-  </details>
-</div>
-
-Selecione a aba Rede (ou Network).
-
-Capture a Tentativa de Login:
-
-Limpe a lista de requisições na aba Rede (Network) .
-Digite um usuário e senha de teste (ex: `teste` e `123`) e clique no botão Login.
-
-Localize a Requisição POST:
-Na lista que aparecer na aba Rede, clique na requisição que foi enviada ao `login.php`.
-No lado esquerdo, clique em request para visualizar os parâmetros que a aplicação espera receber. Observe a imagem abaixo.
-
-<div align="right">
-  <details>
-    <summary font-weight: bold;">
-      [Visualizar parâmetros]
-    </summary>
-    <img src="images/Kali13.png" alt="Visualizar parâmetros" width="600">
-  </details>
-</div>
-
-**Os dados que o seu navegador enviou ao servidor são:**
-```bash
-username: "teste"
-password: "123"
-Login: "Login"
-```
-1. Traduzindo para a String do Hydra
-Você precisa pegar essa estrutura e convertê-la para a string que o Hydra entende, substituindo os valores que mudam (teste e 123) pelas variáveis especiais do Hydra: ^USER^ e ^PASS^.
-
-
-Exemplo (DVWA Low Security): O dado capturado será algo como: 
-`username=admin&password=password&Login=Login.`
-
-Este dado copiado é o POST Data que você usará no comando Hydra para substituir admin e password pelas variáveis ^USER^ e ^PASS^.
 
 
 
