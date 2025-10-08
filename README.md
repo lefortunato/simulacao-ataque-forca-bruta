@@ -19,6 +19,7 @@
 * [💥 1. Ataque de Força Bruta em Serviço FTP com Hydra](#-1-ataque-de-força-bruta-em-serviço-ftp-com-hydra)
 * [💥 2. Ataque de Força Bruta em Serviço FTP com Medusa](#-2-ataque-de-força-bruta-em-serviço-ftp-com-medusa)
 * [💥 3. Ataque de Força Bruta em Formulário Web (DVWA)](#-3-ataque-de-força-bruta-em-formulário-web-dvwa)
+* [💥 4. Ataque de Força Bruta em Serviço SMB com Password Spraying e Enumeração (Hydra e Medusa)]()
 * [💡 Medidas de Mitigação](#medidas-de-mitigação)
 * [🔗 Como Contribuir / Contato](#como-contribuir--contato)
 
@@ -562,6 +563,29 @@ Observe a imagem abaixo:
 **Sucesso:** Quando o login é bem-sucedido, o DVWA carrega uma página diferente, que NÃO contém a string "Login failed". O Hydra, portanto, registra a tentativa como SUCESSO.</br>
 Este método de procurar uma string inexistente na página de sucesso é a técnica mais comum para ataques em que o redirecionamento não ocorre.
 
+## 💥 4. Ataque de Força Bruta em Serviço SMB com Password Spraying e Enumeração (Hydra e Medusa)
+Este cenário foca no ataque ao serviço SMB (Porta 445), que é comumente usado em redes Windows. Utilizaremos a técnica de Password Spraying para tentar uma única senha (muito comum) contra múltiplos usuários, minimizando o risco de bloqueio de conta.
+
+**Objetivo**</br>
+Descobrir credenciais válidas do serviço SMB (porta 445) no Metasploitable 2, usando o Hydra ou Medusa com listas de usuários obtidas por enumeração.
+
+💡 **Por que é Força Bruta?** </br>
+Ataques de Força Bruta são definidos por tentar inúmeras combinações de senhas. O Password Spraying se encaixa nisso, mas ele modifica a estratégia:
+| Tipo de Ataque | Método |
+| :--- | :--- |
+| **Alvo** | Metasploitable 2 (Serviço FTP - Porta 21) |
+| **Força Bruta Clássica** | Tenta **MUITAS** senhas contra um **ÚNICO** usuário. |
+| **Password Spraying** | Tenta uma **ÚNICA** senha (comum) contra **MUITOS** usuários diferentes. |
+
+A lógica por trás do Password Spraying é puramente tática: ele tenta contornar os mecanismos de bloqueio de conta. A maioria dos sistemas bloqueia um usuário após 3 a 5 tentativas de senha erradas. Ao usar uma senha comum contra 100 usuários diferentes, você maximiza suas chances de sucesso sem nunca bloquear uma conta individual.</br></br>
+Portanto, o cenário do SMB é um excelente exemplo de como a força bruta evolui para ser mais eficiente e furtiva em cenários reais de auditoria. </br>
 
 
+
+4.1. Enumeração de Usuários (Reconhecimento)
+Antes de atacar, precisamos de uma lista de usuários válidos. O Metasploitable 2 permite a enumeração simples de usuários.
+
+Comando de Execução (Enumeração):
+
+Usamos o Nmap para tentar obter usuários do serviço Samba/SMB.
 
