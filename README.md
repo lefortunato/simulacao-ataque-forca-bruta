@@ -792,4 +792,20 @@ Este projeto foi desenvolvido como parte de um desafio prático de segurança ci
 | 📧 Fale Comigo | 📧 [E-mail para contato](mailto:leandroantonio.fortunato@hotmail.com) |
 
 
+<div align="center">
+  <a href=" href="https://www.linkedin.com/in/leandro-antonio-fortunato/" target="_blank">
+    <img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn">
+  </a>
+  
+  &nbsp;&nbsp;&nbsp; <a href="mailto:leandroantonio.fortunato@hotmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/-Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="E-mail">
+  </a>
+  
+  &nbsp;&nbsp;&nbsp;
+  
+  <a href="https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-Star-100000?style=flat-square&logo=github&logoColor=white" alt="GitHub Star">
+  </a>
+</div>
+
 
