@@ -20,7 +20,7 @@
 * [💥 2. Ataque de Força Bruta em Serviço FTP com Medusa](#-2-ataque-de-força-bruta-em-serviço-ftp-com-medusa)
 * [💥 3. Ataque de Força Bruta em Formulário Web (DVWA)](#-3-ataque-de-força-bruta-em-formulário-web-dvwa)
 * [💥 4. Ataque de Força Bruta em Serviço SMB com Password Spraying e Enumeração (Hydra e Medusa)](#-4-ataque-de-força-bruta-em-serviço-smb-com-password-spraying-e-enumeração-hydra-e-medusa)
-* [💡 Medidas de Mitigação](#medidas-de-mitigação)
+* [🛡️ Medidas de Mitigação e Recomendações de Segurança](#medidas-de-mitigação)
 * [🔗 Como Contribuir / Contato](#como-contribuir--contato)
 
 ---
@@ -755,4 +755,30 @@ Neste ponto fiz 2 testes:
     <img src="images/Kali19.png" alt="Credenciais descobertas" width="600">
   </details>
 </div>
+
+
+🛡️ **Medidas de Mitigação e Recomendações de Segurança** </br></br>
+Com base nos ataques de Força Bruta simulados (`FTP`, `DVWA`, `SMB`), as seguintes medidas de mitigação são essenciais para fortalecer a segurança do ambiente e prevenir a descoberta automatizada de credenciais.
+
+1. **Prevenção Geral (Todos os Serviços)**</br>
+* Estas são as medidas básicas que mitigam a eficácia de qualquer ataque de força bruta:
+* **Política de Senhas Fortes:** Forçar o uso de senhas complexas que incluam um mínimo de 12 caracteres, letras maiúsculas, minúsculas, números e símbolos. Isso inviabiliza ataques de dicionário simples.
+* **Autenticação de Dois Fatores (`2FA/MFA`):** Implementar a autenticação multifator (`MFA`) em todos os serviços críticos. Mesmo que a senha seja descoberta, o atacante não conseguirá acessar a conta sem o segundo fator.
+* **Monitoramento de Logs:** Configurar alertas para monitorar logs de autenticação e identificar padrões suspeitos (múltiplas falhas de login vindas do mesmo IP em um curto período).
+
+2. **Mitigação Específica por Serviço**</br></br>
+**A. Serviço FTP (`Porta 21`) e SMB (`Portas 139/445`)**</br>
+Estes serviços são especialmente vulneráveis a ataques de varredura automatizada:
+
+* **Bloqueio de Contas por IP (Rate Limiting):** Usar ferramentas como Fail2Ban no servidor Linux para monitorar logs e bloquear o endereço IP de origem temporariamente após um número baixo de tentativas falhas (ex: 3 a 5 falhas em 1 minuto).
+* **Restrição de Acesso por Rede:** Restringir o acesso aos serviços FTP e SMB apenas a faixas de IP internas (`LAN`) ou a usuários que estejam conectados via VPN, removendo-os da exposição pública.
+* **Desativar Enumeração:** No serviço SMB, desabilitar a capacidade de listar e enumerar usuários e compartilhamentos anonimamente (como foi feito com o `enum4linux`).
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **B. Formulários Web (DVWA)** </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Os formulários de login exigem atenção extra contra automação:</br>
+
+* **CAPTCHA / ReCAPTCHA:** Adicionar um desafio visual ou de interação humana (`CAPTCHA`) após 1 ou 2 tentativas falhas de login. Isso impede o envio de requisições automatizadas por scripts ou ferramentas como Hydra.
+* **Tokens CSRF (Cross-Site Request Forgery):** Implementar e validar tokens CSRF únicos e de tempo limitado em cada formulário de login. Como o Hydra não consegue obter e enviar tokens dinamicamente, isso invalida a maioria dos ataques.
+* **Atraso de Resposta:** Adicionar um atraso artificial e exponencial (ex: 1 segundo, 2 segundos, 4 segundos) nas respostas de login após falhas consecutivas, diminuindo drasticamente a velocidade do ataque.
+
 
