@@ -14,7 +14,7 @@
 * [🎯 Descrição do Projeto](#-descrição-do-projeto)
 * [🛠️ Tecnologias e Ferramentas](#%EF%B8%8F-tecnologias-e-ferramentas)
 * [⚙️ Configuração do Ambiente](#%EF%B8%8F-detalhes-da-instalação-e-versões)
-* [🚀 Enumeração de Serviços (Reconhecimento Ativo)](#-cenários-de-ataque-documentados)
+* [🚀 Enumeração de Serviços (Reconhecimento Ativo)](#-enumeração-de-serviços-reconhecimento-ativo)
 * [📋 Criação das Wordlists (Lista de Tentativas)]()
 * [💥 1. Ataque de Força Bruta em Serviço FTP com Hydra]()
 * [💥 2. Ataque de Força Bruta em Serviço FTP com Medusa]()
