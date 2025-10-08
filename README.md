@@ -580,12 +580,26 @@ Ataques de Força Bruta são definidos por tentar inúmeras combinações de sen
 A lógica por trás do Password Spraying é puramente tática: ele tenta contornar os mecanismos de bloqueio de conta. A maioria dos sistemas bloqueia um usuário após 3 a 5 tentativas de senha erradas. Ao usar uma senha comum contra 100 usuários diferentes, você maximiza suas chances de sucesso sem nunca bloquear uma conta individual.</br></br>
 Portanto, o cenário do SMB é um excelente exemplo de como a força bruta evolui para ser mais eficiente e furtiva em cenários reais de auditoria. </br>
 
-
-
-4.1. Enumeração de Usuários (Reconhecimento)
+4.1. **Enumeração de Usuários (Reconhecimento)**
 Antes de atacar, precisamos de uma lista de usuários válidos. O Metasploitable 2 permite a enumeração simples de usuários.
 
-Comando de Execução (Enumeração):
+Usaremos o `enum4linux` para tentar obter usuários do serviço Samba/SMB. Mas primeiro vamos conhecer e analisar a saida do comando abaixo.
+```bash
+enum4linux -a 192.168.56.101
+```
+Este comando retorna muitas informações, inclusive de usuários. Observe a imagem abaixo.
 
-Usamos o Nmap para tentar obter usuários do serviço Samba/SMB.
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Enumeração de usuários]
+    </summary>
+    <img src="images/Kali16.png" alt="Enumeração de usuários" width="600">
+  </details>
+</div>
+O problema deste retorno é que vem de uma forma poluída, o que dificulta copiarmos os usuários e gerarmos o arquivo `smb_users.txt`, que precisaremos para disparar o ataque. </br>
+Agora vamos montar um comando para robusto para nos ajudar a listar apenas os usuários.
+
+🔬 Detalhamento Completo do Comando (Pipeline)
+O comando é um pipeline, onde a saída de cada programa (|) se torna a entrada do próximo.
 
