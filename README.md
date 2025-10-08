@@ -312,10 +312,6 @@ msfadmin
 root
 user
 ```
-
-
-
-
 Crie o Arquivo: No terminal, use o comando para criar e abrir o arquivo diretamente no editor `mousepad`:
 ```bash
 mousepad wordlists/pass.txt &
@@ -330,3 +326,21 @@ msfadmin
 password
 123456
 ```
+3. **Salve e Feche:** Salve o arquivo e feche o editor mousepad.
+
+**B. Criando a Wordlist de Senhas (`pass.txt`)**</br>
+1. **Abra e Crie o Arquivo:** Repita o processo, desta vez para o arquivo de senhas:
+```bash
+mousepad wordlists/pass.txt &
+```
+2. **Popule o Arquivo:** Na nova janela do `mousepad`, digite as senhas que você deseja testar. Cada senha deve ocupar uma linha.
+
+Conteúdo Exemplo de `pass.txt`:
+```bash
+msfadmin
+password
+123456
+```
+3. **Salve e Feche:** Salve o arquivo e feche o editor.
+
+Com esses dois arquivos criados e preenchidos no diretório correto, você garante que o comando Hydra ou Medusa terá todas as entradas necessárias para a simulação do ataque.
