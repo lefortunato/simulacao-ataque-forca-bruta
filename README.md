@@ -415,7 +415,7 @@ Comprovação: Neste passo utilizaremos o comando `ftp://[IP_DO_METASPLOITABLE]`
   </details>
 </div>
 
-💥 **2. Ataque de Força Bruta em Serviço FTP com Medusa** </br></br>
+##💥 **2. Ataque de Força Bruta em Serviço FTP com Medusa** </br></br>
 Neste cenário, demonstramos o uso da ferramenta Medusa para realizar um ataque rápido e eficaz contra o serviço FTP do Metasploitable 2.
 
 **Objetivo**</br>
