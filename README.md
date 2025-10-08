@@ -503,9 +503,9 @@ Obter o Corpo da Requisição HTTP POST para saber quais campos (como `username`
 
 </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4 Vá para a aba Rede (ou Network). Limpe a lista se houver muita coisa.</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 Digite um usuário e senha de teste (ex: `teste` e `123`) e clique no botão Login.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 Digite um usuário e senha de teste (ex: teste e 123) e clique no botão Login.</br></br>
 
-2. **Localize e Expanda os Dados POST**
+2. **Localize e Expanda os Dados POST**</br>
 2.1 Na lista de requisições que aparece, localize a requisição `post` e clique na linha que corresponde ao arquivo `login.php`.</br>
 2.2 Uma nova aba lateral ou painel de detalhes se abrirá a esqueda.</br>
 2.3 Vá para a aba `Request`.</br>
@@ -520,14 +520,34 @@ Obter o Corpo da Requisição HTTP POST para saber quais campos (como `username`
   </details>
 </div>
 
-3. **Traduzindo para a String do Hydra**
-Precisamos pegar essa estrutura e convertê-la para a string que o Hydra entende, substituindo os valores que mudam (`teste` e `123`) pelas variáveis especiais do Hydra: `^USER^` e `^PASS^`.
+3. **Traduzindo para a String do Hydra**</br>
+Precisamos pegar essa estrutura e convertê-la para a string que o Hydra entenda, substituindo os valores que mudam (`teste` e `123`) pelas variáveis especiais do Hydra: `^USER^` e `^PASS^`.
 
 A string de dados para o Hydra será:
+```bash
+username=^USER^&password=^PASS^&Login=Login
+```
+3.1 **Comando Hydra Completo (DVWA)**</br>
+Com base nos dados encontrados, este será o comando completo que usaremos:
+```bash
+hydra -L wordlists/users.txt -P wordlists/pass.txt 192.168.56.101 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=username"
+```
+Observe a imagem abaixo:
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Ataque disparado]
+    </summary>
+    <img src="images/Kali14.png" alt="Ataque disparado" width="600">
+  </details>
+</div>
 
 
 
+Explicação da String de Ataque:
+Corpo da Requisição: username=^USER^&password=^PASS^&Login=Login
 
+String de Falha (:F=username): Este parâmetro diz ao Hydra para procurar a string "username" no código-fonte da página após cada tentativa. Se a string "username" estiver lá, significa que o login falhou (pois o formulário de login foi recarregado). O Hydra considerará sucesso quando essa string não for encontrada (ou quando uma string de sucesso for encontrada).
 --------------------------------------------------------------
 
 
