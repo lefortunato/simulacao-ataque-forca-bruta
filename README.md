@@ -678,7 +678,7 @@ O comando salva a saída completa no arquivo smb_resultado.txt. </br>
 | `-U` | Define o arquivo de Usuários (a lista enumerada).|
 | `-P` | Define o arquivo de passwords (a lista enumerada). |
 | `-M smb` | Define o Módulo (Protocolo) a ser atacado. |
-| `-t 4` | Define as conexões simultâneas (threads). |
+| `-t 2` | Define as conexões simultâneas (threads). |
 | `-O` | Salva o resultado do log em um arquivo. |
 
 * **Credenciais Descobertas:** </br>
@@ -697,29 +697,35 @@ O Medusa identificará o usuário que corresponde à senha única testada (Ex: m
 Este ataque simula a tentativa de usar senhas comuns (password) contra múltiplos usuários para contornar mecanismos de bloqueio de conta.
 
 **Passo a Passo da Execução**</br>
-**Executar o Hydra:** No terminal, execute o comando, usando o módulo smb e definindo 2 threads simultâneas.
-**Analisar a Saída:** O comando salva a saída completa no arquivo smb_resultado.txt.
+* **Verificar Wordlists:** </br>
+Confirme que os arquivos `smb_users.txt` e `senhas_spray.txt` estão prontos.</br>
+
+* **Executar o Hydra:** </br>
+No terminal, execute o comando, usando o módulo smb e definindo 2 threads simultâneas.
 ```bash
-medusa -h 192.168.56.101 -U wordlists/users_smb.txt -P wordlists/senhas_spray.txt -M smbnt -t 2 -O smb_resultado.txt
+hydra -L wordlists/smb_users.txt -P wordlists/senhas_spray.txt smb://192.168.56.101 -t 2 -T 50 -o resultado_smb.txt
 ```
+* **Analisar a Saída:** </br>
+O comando salva a saída completa no arquivo smb_resultado.txt.
+
 | Parâmetro | Função |
-| :--- | :--- |
-| `-h` | Define o Host (endereço IP do Metasploitable). |
-| `-U` | Define o arquivo de Usuários (a lista enumerada).|
-| `-P` | Define o arquivo de passwords (a lista enumerada). |
-| `-M smb` | Define o Módulo (Protocolo) a ser atacado. |
-| `-t 4` | Define as conexões simultâneas (threads). |
-| `-O` | Salva o resultado do log em um arquivo. |
+| :--- | :--- | :--- |
+| `-L wordlists/smb_users.txt	` | Lista de Usuários | Define o caminho (`-L` de List) para o arquivo contendo a lista de nomes de usuário válidos, obtida via `enum4linux`. |
+| `-P wordlists/senhas_spray.txt` | Lista de Senhas | Define o caminho (`-P` de Password List) para o arquivo contendo as senhas comuns/únicas a serem testadas. |
+| `smb://192.168.56.101` | Alvo e Serviço | Especifica o protocolo (`smb`) e o endereço IP do servidor alvo (o Metasploitable).  |
+| `-t 2` | Tarefas/Conexões Simultâneas | Define o número de tarefas por alvo (`threads`) que o Hydra tentará abrir. O valor 2 é baixo e ajuda a evitar sobrecarregar ou causar instabilidade no alvo (especialmente importante em SMB). |
+| `-T 50` | Total de Tarefas | Define o máximo de tarefas (`threads`) que o Hydra pode rodar globalmente. Esse parâmetro otimiza a performance em ataques grandes. |
+| `-o resultado_smb.txt` | Saída para Arquivo | Direciona a saída completa (`-o` de Output), incluindo logs e credenciais encontradas, para um arquivo chamado `resultado_smb.txt.` |
 
 **Credenciais Descobertas:** </br></br>
-O Medusa identificará o usuário que corresponde à senha única testada (Ex: msfadmin:password). Observe a imagem abaixo.
+O Hydra identificará o usuário que corresponde à senha única testada (Ex: msfadmin:password). Observe a imagem abaixo.
 
 <div align="right">
   <details>
     <summary font-weight: bold;">
       [Credenciais descobertas]
     </summary>
-    <img src="images/Kali17.png" alt="Credenciais descobertas" width="600">
+    <img src="images/Kali18.png" alt="Credenciais descobertas" width="600">
   </details>
 </div>
 
