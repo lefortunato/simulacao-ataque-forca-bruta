@@ -729,3 +729,30 @@ O Hydra identificará o usuário que corresponde à senha única testada (Ex: ms
   </details>
 </div>
 
+✅ **Validação de Acesso e Credenciais** </br>
+Após a execução do Password Spraying com o Hydra ou Medusa, a validação é essencial para confirmar a autenticidade das credenciais descobertas.
+
+**Passos de Comprovação**</br></br>
+1. **Análise do Log:**</br>
+* Verifique o arquivo de saída gerado pelo Medusa (`smb_resultado.txt`) usando o comando `cat` ou `less`. A credencial bem-sucedida será listada de forma explícita.
+* Exemplo Medusa: `Host: 192.168.56.101:445/smb User: msfadmin Password: msfadmin [SUCCESS]`
+* Exemplo Hydra: `host: 192.168.56.101 login: msfadmin Password: msfadmin`
+
+2. **Validação de Conexão:**</br>
+* Use o cliente SMB do Kali, `smbclient`, para tentar logar no servidor com as credenciais descobertas, provando o acesso de rede.
+```bash
+smbclient -L //192.168.56.101 -U msfadmin
+```
+Neste ponto fiz 2 testes:
+* Primeiro digitei a senha errada para ver o resultado.
+* Depois digitei a senha descoberta. Observe a imagem abaixo.
+
+<div align="right">
+  <details>
+    <summary font-weight: bold;">
+      [Validando Conexão]
+    </summary>
+    <img src="images/Kali19.png" alt="Credenciais descobertas" width="600">
+  </details>
+</div>
+
