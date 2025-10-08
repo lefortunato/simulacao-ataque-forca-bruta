@@ -411,7 +411,7 @@ Comprovação: Neste passo utilizaremos o comando `ftp://[IP_DO_METASPLOITABLE]`
     <summary font-weight: bold;">
       [Acesso FTP]
     </summary>
-    <img src="images/Kali08.png" alt="Acesso FTP" width="600">
+    <img src="images/Kali09.png" alt="Acesso FTP" width="600">
   </details>
 </div>
 
