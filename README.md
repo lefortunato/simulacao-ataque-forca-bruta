@@ -612,7 +612,7 @@ O problema deste retorno é que vem de uma forma poluída, o que dificulta copia
 Devido ao excesso de informação, é necessário um comando de filtragem (como o `grep`, `awk` e `tr` que definimos) para extrair apenas os nomes de usuários do resultado e criar a wordlist limpa (`users_smb.txt`).</br></br>
 Agora montaremos um comando robusto para nos ajudar a listar apenas os usuários.</br></br>
 
-**Comando de Filtragem**</br></br>
+**Comando de Filtragem**</br>
 ```bash
 eenum4linux -U 192.168.56.101 | grep "user:" | awk '{print $(NF-2)}' | tr -d '[]' > wordlists/users_smb.txt
 ```
@@ -625,5 +625,5 @@ eenum4linux -U 192.168.56.101 | grep "user:" | awk '{print $(NF-2)}' | tr -d '[]
 | > users_smb.txt | Redirecionamento |Salva a saída final. | Redireciona o resultado final limpo (apenas nomes de usuário) para um novo arquivo chamado users_smb.txt. |
 
 🎯 **Objetivo Final**</br></br>
-O comando completo executa a enumeração, filtra o cabeçalho, isola o nome de usuário e, em seguida, remove a sujeira (colchetes), criando uma wordlist limpa, pronta para o ataque Password Spraying do Medusa.
+O comando completo executa a enumeração, filtra o cabeçalho, isola o nome de usuário e, em seguida, remove a sujeira (colchetes), criando uma wordlist limpa, pronta para o ataque Password Spraying.
 
