@@ -708,7 +708,7 @@ hydra -L wordlists/smb_users.txt -P wordlists/senhas_spray.txt smb://192.168.56.
 * **Analisar a Saída:** </br>
 O comando salva a saída completa no arquivo smb_resultado.txt.
 
-| Parâmetro | Função |
+| Elemento do Comando | Função | Explicação |
 | :--- | :--- | :--- |
 | `-L wordlists/smb_users.txt	` | Lista de Usuários | Define o caminho (`-L` de List) para o arquivo contendo a lista de nomes de usuário válidos, obtida via `enum4linux`. |
 | `-P wordlists/senhas_spray.txt` | Lista de Senhas | Define o caminho (`-P` de Password List) para o arquivo contendo as senhas comuns/únicas a serem testadas. |
@@ -717,7 +717,7 @@ O comando salva a saída completa no arquivo smb_resultado.txt.
 | `-T 50` | Total de Tarefas | Define o máximo de tarefas (`threads`) que o Hydra pode rodar globalmente. Esse parâmetro otimiza a performance em ataques grandes. |
 | `-o resultado_smb.txt` | Saída para Arquivo | Direciona a saída completa (`-o` de Output), incluindo logs e credenciais encontradas, para um arquivo chamado `resultado_smb.txt.` |
 
-**Credenciais Descobertas:** </br></br>
+* **Credenciais Descobertas:** </br>
 O Hydra identificará o usuário que corresponde à senha única testada (Ex: msfadmin:password). Observe a imagem abaixo.
 
 <div align="right">
