@@ -20,7 +20,7 @@
 * [💥 2. Ataque de Força Bruta em Serviço FTP com Medusa](#-2-ataque-de-força-bruta-em-serviço-ftp-com-medusa)
 * [💥 3. Ataque de Força Bruta em Formulário Web (DVWA)](#-3-ataque-de-força-bruta-em-formulário-web-dvwa)
 * [💥 4. Ataque de Força Bruta em Serviço SMB com Password Spraying e Enumeração (Hydra e Medusa)](#-4-ataque-de-força-bruta-em-serviço-smb-com-password-spraying-e-enumeração-hydra-e-medusa)
-* [🛡️ Medidas de Mitigação e Recomendações de Segurança](#medidas-de-mitigação)
+* [🛡️ Medidas de Mitigação e Recomendações de Segurança](#%EF%B8%8F-medidas-de-mitigação-e-recomendações-de-segurança-)
 * [🔗 Como Contribuir / Contato](#como-contribuir--contato)
 
 ---
