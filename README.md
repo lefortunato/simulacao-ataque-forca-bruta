@@ -209,7 +209,7 @@ Após iniciar as VMs, é necessário verificar ou definir seus IPs manualmente p
     <summary font-weight: bold;">
       [Verificação Meta]
     </summary>
-    <img src="images/meta08.png" alt="Verificação Meta" width="600">
+    <img src="images/Meta08.png" alt="Verificação Meta" width="600">
   </details>
 </div>
 
