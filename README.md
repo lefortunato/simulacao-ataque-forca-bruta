@@ -297,16 +297,16 @@ echo "123456" >> wordlists/pass.txt
 **Opção 2:** Criação Manual Via Editor de Texto (`mousepad`)</br></br>
 Este método é ideal para criar `wordlists` mais longas ou que exigem organização visual, usando um editor de texto gráfico do Kali Linux.
 
-**A. Criando a Wordlist de Usuários (`users.txt`)**
-Abra e Crie o Arquivo: No terminal do Kali, execute o comando abaixo. Ele usará o `mousepad` para criar e abrir o arquivo `users.txt` no diretório wordlists/.
+**A. Criando a Wordlist de Usuários (`users.txt`)**</br>
+1. **Abra e Crie o Arquivo:** No terminal do Kali, execute o comando abaixo. Ele usará o `mousepad` para criar e abrir o arquivo `users.txt` no diretório wordlists/.
 ```bash
 mousepad wordlists/users.txt &
 ```
 Nota: O símbolo `&` no final permite que o editor abra em uma janela separada enquanto você mantém o terminal ativo.
 
-Popule o Arquivo: No `mousepad`, digite os usuários que você deseja testar. Cada usuário deve ocupar uma linha.
+2. **Popule o Arquivo:** No `mousepad`, digite os usuários que você deseja testar. Cada usuário deve ocupar uma linha.
 
-Conteúdo Exemplo de users.txt:
+Conteúdo Exemplo de `users.txt`:
 ```bash
 msfadmin
 root
