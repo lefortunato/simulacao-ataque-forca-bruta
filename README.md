@@ -478,3 +478,46 @@ less Resultado.txt
 **Resultado Esperado:**
 A linha final do log confirmará o sucesso do ataque, exibindo a combinação correta (ex: msfadmin:msfadmin), confirmando o sucesso da simulação.
 
+## 💥 3. Ataque de Força Bruta em Formulário Web (DVWA)
+Neste cenário, simularemos um ataque de força bruta contra uma página de login web (DVWA) utilizando o Hydra, uma ferramenta de linha de comando versátil do Kali Linux.
+
+### 🔍 Análise da Requisição Web (Obtendo o POST Data)
+Antes de lançar o ataque de força bruta com Hydra, precisamos entender como o formulário de login do DVWA envia os dados. Usaremos o Modo Desenvolvedor do navegador para capturar o "esqueleto" da requisição HTTP.
+
+**Objetivo**</br>
+Obter o Corpo da Requisição HTTP POST para saber quais campos (como `username`, `password` e o botão `Login`) o Hydra deve preencher.
+
+**Passos para obter o corpo da requisição**</br>
+1. **Acesse a Página de Login:**
+Abra o navegador (Firefox ou Chrome no Kali) e acesse o endereço de login do DVWA: `http://192.168.56.101/dvwa/login.php` (Substitua o IP se necessário). 
+
+2. **Abra as Ferramentas de Desenvolvedor:**
+Pressione `Ctrl + Shift + I` (atalho padrão para Chrome/Firefox no Linux/Windows) para abrir o painel de ferramentas do desenvolvedor.
+
+Selecione a aba Rede (ou Network).
+
+Capture a Tentativa de Login:
+
+Limpe a lista de requisições na aba Rede.
+
+Digite um usuário e senha de teste (ex: `admin` e `password`) e clique no botão Login.
+
+Localize a Requisição POST:
+
+Na lista que aparecer na aba Rede, clique na requisição que foi enviada ao `login.php`.
+
+Copie o Corpo da Requisição (O Dado Chave):
+
+Dentro da requisição do `login.php`, vá para a aba Cabeçalhos (Headers).
+
+Role para baixo até encontrar a seção "Dados do Formulário" (Form Data) ou "Payload".
+
+Copie o texto completo dessa seção.
+
+Exemplo (DVWA Low Security): O dado capturado será algo como: 
+`username=admin&password=password&Login=Login.`
+
+Este dado copiado é o POST Data que você usará no comando Hydra para substituir admin e password pelas variáveis ^USER^ e ^PASS^.
+
+
+
